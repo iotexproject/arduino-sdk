@@ -1,0 +1,55 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Iotex	KEYWORD1
+IoTeX	KEYWORD1
+iotex	KEYWORD1
+
+# Namespaces
+api	KEYWORD1
+abi	KEYWORD1
+responsetypes	KEYWORD1
+
+# Classes
+Account	KEYWORD1
+Xrc20Contract KEYWORD1
+ResultCode	KEYWORD1
+Wallets	KEYWORD1
+Connection	KEYWORD1
+InputOutputAbi	KEYWORD1
+ParameterValue	KEYWORD1
+ParameterValuesDictionary KEYWORD1
+IotexLogLevel KEYWORD1
+Host KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+#######################################
+# Structures (KEYWORD3)
+#######################################
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+IOTEX_HASH_SIZE LITERAL1
+IOTEX_PRIVATE_KEY_SIZE LITERAL1
+IOTEX_PUBLIC_KEY_SIZE LITERAL1
+IOTEX_SIGNATURE_SIZE LITERAL1
+IOTEX_ADDRESS_C_STRING_SIZE LITERAL1
+IOTEX_MAX_BALANCE_C_STRING_SIZE LITERAL1
+ETH_ADDRESS_C_STRING_SIZE LITERAL1
+IOTEX_HASH_C_STRING_SIZE LITERAL1
+IOTEX_PUBLIC_KEY_C_STRING_SIZE LITERAL1
+IOTEX_PRIVATE_KEY_C_STRING_SIZE LITERAL1
+IOTEX_SIGNATURE_C_STRING_SIZE LITERAL1
+IOTEX_CONTRACT_ENCODED_FUNCTIONSELECTOR_SIZE LITERAL1
+IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE LITERAL1
+IOTEX_CONTRACT_ENCODED_TRANSFER_SIZE LITERAL1

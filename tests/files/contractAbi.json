@@ -1,0 +1,78 @@
+[
+    {
+        "constant": false,
+        "name": "function1",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "uint8Input",
+                "type": "uint8"
+            },
+            {
+                "name": "uintInput",
+                "type": "uint"
+            },
+            {
+                "name": "int32Input",
+                "type": "int32"
+            },
+            {
+                "name": "addressInput",
+                "type": "address"
+            },
+            {
+                "name": "boolInput",
+                "type": "bool"
+            },
+            {
+                "name": "bytes24Input",
+                "type": "bytes24"
+            },
+            {
+                "name": "stringInput",
+                "type": "string"
+            },
+            {
+                "name": "bytesDynamicInput",
+                "type": "bytes"
+            },
+
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "name": "function2",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "inputs": [
+            {
+                "name": "input1",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "name": "notAFunction",
+        "outputs": [],
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "payable",
+        "type": "notAFunction"
+    }
+]

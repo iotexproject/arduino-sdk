@@ -1,0 +1,67 @@
+{
+    "name": "IoTeX-client",
+    "description": "Library to interact with the IoTeX bockchain from Arduino boards",
+    "repository": {
+      "type": "git",
+      "url": ""
+    },
+    "version": "0.0.1",
+    "authors": [
+      {
+        "name": "IoTeX",
+        "email": "",
+        "url": ""
+      }
+    ],
+    "includeDir": "src",
+    "srcDir": "src",
+    "frameworks": "arduino",
+    "platforms": [
+      "espressif8266",
+      "espressif32"
+    ],
+    "export": {
+      "include": [
+        "src/*",
+        "include/*",
+        "examples/*",
+        "*.md",
+        "*.json",
+        "*.properties",
+        "LICENSE",
+        "*.ini",
+        "keywords.txt"
+      ],
+      "exclude": [
+        "*/*.txt"
+      ]
+    },
+    "build": {
+        "flags":
+        [
+            "-I src/extern",
+            "-I src/extern/nanopb",
+            "-I src/extern/crypto",
+            "-I src/extern/cjson",
+            "-I src/encoder",
+            "-I src/protobuf_files/c_files"
+        ],
+        "extraScript": "extra_script.py",
+        "srcFilter": 
+        [
+          "+<*>",
+          "+<src/protobuf/c_files/*>",
+          "+<src/extern/*>",
+          "-<src/extern/crypto/aes/aescrypt.c>",
+          "-<src/extern/nanopb/examples/*>",
+          "-<src/extern/nanopb/tests/*>",
+          "-<**/os/*>"
+        ]
+    },
+    "libLDFMode": "deep+",
+    "dependencies":
+    [
+      "FlashStorage",
+      "WiFiNINA"
+    ]
+  }
