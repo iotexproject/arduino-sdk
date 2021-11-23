@@ -10,7 +10,7 @@ extern/nanopb/tools/*
 **/extensions.json
 **/settings.json
 encoded_actioncore.bin
-**/secrets.h
+tests/**/secrets.h
 examples/**/.gitignore
 
 Notes.md
