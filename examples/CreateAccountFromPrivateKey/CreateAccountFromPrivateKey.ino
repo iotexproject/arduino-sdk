@@ -25,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-    // Private key of the origin address
+    // Private key
     const char pkString[] = SECRET_PRIVATE_KEY;
     
     // Convert the privte key hex string byte array

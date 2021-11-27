@@ -1,5 +1,5 @@
 {
-    "name": "IoTeX-client",
+    "name": "IoTeX-blockchain-client",
     "description": "Library to interact with the IoTeX bockchain from Arduino boards",
     "repository": {
       "type": "git",
@@ -39,6 +39,7 @@
     "build": {
         "flags":
         [
+            "-I src",
             "-I src/extern",
             "-I src/extern/nanopb",
             "-I src/extern/crypto",
@@ -46,7 +47,6 @@
             "-I src/encoder",
             "-I src/protobuf_files/c_files"
         ],
-        "extraScript": "extra_script.py",
         "srcFilter": 
         [
           "+<*>",
@@ -61,7 +61,13 @@
     "libLDFMode": "deep+",
     "dependencies":
     [
-      "FlashStorage",
-      "WiFiNINA"
+      {
+        "name": "FlashStorage",
+        "platforms": ["atmelsam"]
+      },
+      {
+        "name": "WiFiNINA",
+        "platforms": ["atmelsam"]
+      }
     ]
   }
