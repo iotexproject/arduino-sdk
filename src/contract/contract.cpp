@@ -57,7 +57,7 @@ ResultCode iotex::Contract::generateCallData(const IotexString& functionName,
 			// Function selector
 			generateFunctionSelector(function, contractData);
 			IotexHelpers.vectorToHexString(contractData, out);
-			IOTEX_DEBUG(logModule, "Genrated function selector:\n%s",
+			IOTEX_DEBUG(logModule, "Generated function selector:\n%s",
 						  out.c_str());
 
 			// Params
@@ -115,6 +115,10 @@ ResultCode iotex::Contract::generateCallData(const IotexString& functionName,
 					generateBytesForUint((uint8_t*)&bytesUntilThisTail, sizeof(bytesUntilThisTail),
 										 head);
 					IOTEX_DEBUG_BUF(logModule, head, 32);
+					for (int i =0; i<32; i++)
+					{
+						contractData.push_back(head[i]);
+					}
 				}
 			}
 
