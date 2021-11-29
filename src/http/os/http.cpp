@@ -32,6 +32,7 @@ class PlatformHTTP : public AbstractHTTP
 				   std::min((size_t)2, headerSize - strlen(statusNeedle)));
 			for(int i = 0; i < strlen(codeStr); i++)
 			{
+				if (codeStr[i] == ' ') continue;
 				if(!isdigit(codeStr[i]))
 				{
 					isDigit = false;
