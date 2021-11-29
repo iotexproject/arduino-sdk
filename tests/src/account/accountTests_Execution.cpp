@@ -99,10 +99,6 @@ TEST_F(AccountTests_Execution, signExecutionAction)
     strcpy(core.gasPrice, gasPrice);
     strcpy(core.execution.amount, amount);
     strcpy(core.execution.contract, contractAddr);
-
-    // char base64DataStr[16] = {0};
-    // encoder.base64_encode(data, sizeof(data), base64DataStr);
-    // core.execution.data = base64DataStr;
     core.execution.data = dataStr;
 
     uint8_t hash[IOTEX_HASH_SIZE] = {0};

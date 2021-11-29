@@ -18,7 +18,7 @@
 using namespace std;
 using namespace testing;
 using namespace iotex;
-using namespace iotex::ResponseTypes;
+using namespace iotex::responsetypes;
 using namespace iotex::abi;
 
 namespace
@@ -103,9 +103,6 @@ TEST_F(AccountTests_Integration, sendExecution_InvalidNonce_ReturnsGrpcError)
 
     ASSERT_EQ(ResultCode::ERROR_GRPC, result);
 }
-
-
-
 
 // Tests commented out as they interact with the blockchain. Some expectations (eg. nonce) will have to change after every execution
 

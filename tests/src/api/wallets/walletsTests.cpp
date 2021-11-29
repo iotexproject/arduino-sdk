@@ -16,7 +16,7 @@ namespace
 {
     constexpr const char tTransactionHash[] = "e19dfb0c84799fc43217287d0d81369348279a0b3b32d0ad2f973ee5aaa392ae";
     const char tExecutionHash[] = "55b172298e80dff0fa929c7c7f7ecc266baf48e33aa226b3fd48d4de870b1efa";
-    constexpr const char tAccount[] = IOTEX_ADDRESS_2;
+    constexpr const char tAccount[] = IOTEX_ADDRESS;
     constexpr const char tIp[] = "gateway.iotexlab.io";
     constexpr const char tBaseUrl[] = "iotexapi.APIService";
     constexpr const int tPort = 10000;
@@ -36,7 +36,7 @@ TEST_F(WalletTests, GetBalance)
     ResultCode result = connection.api.wallets.getBalance(tAccount, balance);
     
     ASSERT_EQ(result, ResultCode::SUCCESS);
-    ASSERT_EQ(balance, "1000000000000000000");
+    ASSERT_EQ(balance, "0");
 }
 
 TEST_F(WalletTests, GetAccount)
@@ -47,11 +47,11 @@ TEST_F(WalletTests, GetAccount)
 
     ASSERT_EQ(result, ResultCode::SUCCESS);
     ASSERT_STREQ(accountMeta.address, tAccount);
-    ASSERT_STREQ(accountMeta.balance, "1000000000000000000");
+    ASSERT_STREQ(accountMeta.balance, "0");
     ASSERT_FALSE(accountMeta.isContract);
-    ASSERT_EQ(accountMeta.nonce, "0");
-    ASSERT_EQ(accountMeta.pendingNonce, "1");
-    ASSERT_EQ(accountMeta.numActions, "1");
+    ASSERT_EQ(accountMeta.nonce, "1");
+    ASSERT_EQ(accountMeta.pendingNonce, "2");
+    ASSERT_EQ(accountMeta.numActions, "2");
 }
 
 TEST_F(WalletTests, GetTransactionByHash)

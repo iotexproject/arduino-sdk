@@ -24,7 +24,7 @@ class Xrc20ContractTests : public Test
 
         void TearDown() override {}
 
-        char addressStr[ETH_ADDRESS_STRLEN+1] = "f55000ebcf4ec082256be18f4cc491d2a469ff61";
+        char addressStr[ETH_ADDRESS_C_STRING_SIZE] = "19e7e376e7c213b7e7e7e46cc70a5dd086daff2a";
         uint8_t address[ETH_ADDRESS_SIZE] = {0};
 };
 
@@ -39,9 +39,9 @@ TEST_F(Xrc20ContractTests, generateCallDataForTotalSupply)
 
 TEST_F(Xrc20ContractTests, generateCallDataForBalanceOf)
 {
-    char expected[] = "70a08231000000000000000000000000f55000ebcf4ec082256be18f4cc491d2a469ff61";
+    char expected[] = "70a0823100000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2a";
     uint8_t data[IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE] = {0};
-    char dataStr[sizeof(expected)];
+    char dataStr[sizeof(expected)] = {0};
     Xrc20Contract::generateCallDataForBalanceOf(address, data);
     signer.hex2str(data, sizeof(data), dataStr, sizeof(dataStr));
     ASSERT_STREQ(expected, dataStr);
@@ -49,9 +49,9 @@ TEST_F(Xrc20ContractTests, generateCallDataForBalanceOf)
 
 TEST_F(Xrc20ContractTests, generateCallDataForTransfer)
 {
-    char expected[] = "a9059cbb000000000000000000000000f55000ebcf4ec082256be18f4cc491d2a469ff610000000000000000000000000000000000000000000000000000000000000064";
+    char expected[] = "a9059cbb00000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2a0000000000000000000000000000000000000000000000000000000000000064";
     uint8_t data[IOTEX_CONTRACT_ENCODED_TRANSFER_SIZE] = {0};
-    char dataStr[sizeof(expected)];
+    char dataStr[sizeof(expected)] = {0};
     Xrc20Contract::generateCallDataForTransfer(address, 100, data);
     signer.hex2str(data, sizeof(data), dataStr, sizeof(dataStr));
     ASSERT_STREQ(expected, dataStr);

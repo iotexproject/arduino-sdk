@@ -45,7 +45,7 @@ static const char* EthereumTypeNameToStringLT[] = {"uint",	 "int",	  "address", 
 // Json objects
 /**
  * @brief A class that represents the ABI for an input or output field of a
- * contract funciton
+ * contract function
  *
  */
 class InputOutputAbi
