@@ -34,6 +34,7 @@ for example in ${EXAMPLES[@]}; do
     cd ../examples/${example}
     
     for env in ${ENVS[@]}; do
+        rm -rf .pio
         pio run --environment ${env} 1> /dev/null 2> /dev/null
         if [ $? -eq 0 ]; then
             echo -e "\t${GREEN}${env}: Success${NC}"
