@@ -102,7 +102,7 @@ if(UNIT_TEST)
     add_subdirectory(tests)
 endif()
 
-SET(LOG_LEVEL "IOTEX_LOG_LEVEL_NONE" CACHE STRING "The level for debug logs. Disabled by default")
+SET(LOG_LEVEL "IOTEX_LOG_LEVEL_NONE" CACHE STRING "The level for debug logs. Set to none by default")
 target_compile_definitions(iotex-client
     PUBLIC IOTEX_LOG_LEVEL=IOTEX_LOG_LEVEL_${LOG_LEVEL}
 )
