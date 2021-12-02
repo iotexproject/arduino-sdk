@@ -69,11 +69,11 @@ void loop() {
         Serial.print("Signature: ");
         Serial.println(data.action.signature);
         Serial.print("Gas limit: ");
-        Serial.println(data.action.core.gasLimit);
+        Serial.println((uint32_t)data.action.core.gasLimit);
         Serial.print("Gas price: ");
         Serial.println(data.action.core.gasPrice);
         Serial.print("Nonce: ");
-        Serial.println(data.action.core.nonce);
+        Serial.println((uint32_t)data.action.core.nonce);
         Serial.print("Amount: ");
         Serial.println(data.action.core.transfer.amount);
         Serial.print("Recipient: ");

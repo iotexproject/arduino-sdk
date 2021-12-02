@@ -1,16 +1,16 @@
 {
     "name": "IoTeX-blockchain-client",
-    "description": "Library to interact with the IoTeX bockchain from Arduino boards",
+    "description": "A simple API client implementation in C++ for the IoTeX blockchain.",
     "repository": {
       "type": "git",
-      "url": ""
+      "url": "https://github.com/iotexproject/arduino-sdk/releases"
     },
-    "version": "0.0.1",
+    "version": "0.1.2",
     "authors": [
       {
         "name": "IoTeX",
-        "email": "",
-        "url": ""
+        "email": "suppor@iotex.io",
+        "url": "https://iotex.io/"
       }
     ],
     "includeDir": "src",

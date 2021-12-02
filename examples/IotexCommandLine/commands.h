@@ -306,9 +306,11 @@ void AddData()
     // String signature = "test-signature"; // Uncomment to use harcoded 
     Serial.println("Signature: " + signature);
     
-    uint8_t dataBytes[data.length()/2] = {0};
+    uint8_t dataBytes[data.length()/2];
+    memset(dataBytes, 0, sizeof(dataBytes));
     signer.str2hex(data.c_str(), dataBytes, sizeof(dataBytes));
-    uint8_t signatureBytes[signature.length()/2] = {0};
+    uint8_t signatureBytes[signature.length()/2];
+    memset(dataBytes, 0, sizeof(dataBytes));
     signer.str2hex(signature.c_str(), signatureBytes, sizeof(signatureBytes));
 
     // Create the account
