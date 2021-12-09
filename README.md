@@ -1,6 +1,6 @@
 # IoTeX-Client
 
-A simple C++ API client implementation in for the IoTeX Blockchain
+A simple C++ API client implementation in for the IoTeX Blockchain  
 Compatible with some popular Arduino boards and Raspberry Pi/Unix environments
 
 # Documentation
