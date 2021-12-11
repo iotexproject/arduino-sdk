@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vectortohexstring_0',['vectorToHexString',['../classiotex_1_1_helpers.html#a025f21788cb46d9b92d307b4d522ae25',1,'iotex::Helpers']]]
+  ['readprivatekey_0',['readPrivateKey',['../classiotex_1_1_storage.html#a82ae33ed685c98cce90a3c52eff5c98a',1,'iotex::Storage']]]
 ];

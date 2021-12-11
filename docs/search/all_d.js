@@ -10,8 +10,10 @@ var searchData=
   ['setmoduleloglevel_7',['setModuleLogLevel',['../classiotex_1_1_helpers.html#a17928f0f8c7ce4ddf7b460a7f413a8e1',1,'iotex::Helpers']]],
   ['signer_8',['Signer',['../classiotex_1_1_signer.html',1,'iotex']]],
   ['signexecutionaction_9',['signExecutionAction',['../classiotex_1_1_account.html#a3d5a6fd48b93a14cc030cb57f396c024',1,'iotex::Account']]],
-  ['signmessage_10',['signMessage',['../classiotex_1_1_account.html#ae5af0ea739250744aadca0355c4fe660',1,'iotex::Account']]],
-  ['signtokentransferaction_11',['signTokenTransferAction',['../classiotex_1_1_account.html#a13edf137a996da9c9434010acb0a4cef',1,'iotex::Account']]],
-  ['storage_12',['Storage',['../classiotex_1_1_storage.html',1,'iotex']]],
-  ['stringjsonprop_13',['StringJsonProp',['../structiotex_1_1json_1_1_string_json_prop.html',1,'iotex::json']]]
+  ['signhash_10',['signHash',['../classiotex_1_1_signer.html#af557b71342872d12c910b668bb8e8392',1,'iotex::Signer']]],
+  ['signmessage_11',['signMessage',['../classiotex_1_1_account.html#ae5af0ea739250744aadca0355c4fe660',1,'iotex::Account::signMessage()'],['../classiotex_1_1_signer.html#a2906181140055beffb6e4eaad1340dcb',1,'iotex::Signer::signMessage()']]],
+  ['signtokentransferaction_12',['signTokenTransferAction',['../classiotex_1_1_account.html#a13edf137a996da9c9434010acb0a4cef',1,'iotex::Account']]],
+  ['storage_13',['Storage',['../classiotex_1_1_storage.html',1,'iotex']]],
+  ['str2hex_14',['str2hex',['../classiotex_1_1_signer.html#a05333752cc09a04415d131fc4b877c14',1,'iotex::Signer']]],
+  ['stringjsonprop_15',['StringJsonProp',['../structiotex_1_1json_1_1_string_json_prop.html',1,'iotex::json']]]
 ];

@@ -75,31 +75,347 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a72b1fd6d4105cf589e820ec314373125"><td class="memItemLeft" align="right" valign="top"><a id="a72b1fd6d4105cf589e820ec314373125" name="a72b1fd6d4105cf589e820ec314373125"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getHash</b> (const uint8_t *pData, size_t size, uint8_t hash[IOTEX_HASH_SIZE])</td></tr>
+<tr class="memitem:a72b1fd6d4105cf589e820ec314373125"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#a72b1fd6d4105cf589e820ec314373125">getHash</a> (const uint8_t *pData, size_t size, uint8_t hash[IOTEX_HASH_SIZE])</td></tr>
+<tr class="memdesc:a72b1fd6d4105cf589e820ec314373125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the kekkac 256 hash.  <a href="classiotex_1_1_signer.html#a72b1fd6d4105cf589e820ec314373125">More...</a><br /></td></tr>
 <tr class="separator:a72b1fd6d4105cf589e820ec314373125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afddb6469e038861c49b8b819e787c547"><td class="memItemLeft" align="right" valign="top"><a id="afddb6469e038861c49b8b819e787c547" name="afddb6469e038861c49b8b819e787c547"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getEthereumMessageHash</b> (const uint8_t *pMsg, size_t length, uint8_t hash[IOTEX_HASH_SIZE])</td></tr>
+<tr class="memitem:afddb6469e038861c49b8b819e787c547"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#afddb6469e038861c49b8b819e787c547">getEthereumMessageHash</a> (const uint8_t *pMsg, size_t length, uint8_t hash[IOTEX_HASH_SIZE])</td></tr>
+<tr class="memdesc:afddb6469e038861c49b8b819e787c547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Ethereum Message hash.  <a href="classiotex_1_1_signer.html#afddb6469e038861c49b8b819e787c547">More...</a><br /></td></tr>
 <tr class="separator:afddb6469e038861c49b8b819e787c547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a010b8752d10b60c550ad7de40122000e"><td class="memItemLeft" align="right" valign="top"><a id="a010b8752d10b60c550ad7de40122000e" name="a010b8752d10b60c550ad7de40122000e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>getPublicKey</b> (const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE], uint8_t publicKey[IOTEX_PUBLIC_KEY_SIZE])</td></tr>
+<tr class="memitem:a010b8752d10b60c550ad7de40122000e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#a010b8752d10b60c550ad7de40122000e">getPublicKey</a> (const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE], uint8_t publicKey[IOTEX_PUBLIC_KEY_SIZE])</td></tr>
+<tr class="memdesc:a010b8752d10b60c550ad7de40122000e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the public key from the private key.  <a href="classiotex_1_1_signer.html#a010b8752d10b60c550ad7de40122000e">More...</a><br /></td></tr>
 <tr class="separator:a010b8752d10b60c550ad7de40122000e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae63410217561da71e0b9daf17f6b31b1"><td class="memItemLeft" align="right" valign="top"><a id="ae63410217561da71e0b9daf17f6b31b1" name="ae63410217561da71e0b9daf17f6b31b1"></a>
-ResultCode&#160;</td><td class="memItemRight" valign="bottom"><b>getSignature</b> (const uint8_t *data, size_t size, const uint8_t private_key[IOTEX_PRIVATE_KEY_SIZE], uint8_t signature[IOTEX_SIGNATURE_SIZE])</td></tr>
-<tr class="separator:ae63410217561da71e0b9daf17f6b31b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af557b71342872d12c910b668bb8e8392"><td class="memItemLeft" align="right" valign="top"><a id="af557b71342872d12c910b668bb8e8392" name="af557b71342872d12c910b668bb8e8392"></a>
-ResultCode&#160;</td><td class="memItemRight" valign="bottom"><b>signHash</b> (const uint8_t hash[IOTEX_HASH_SIZE], const uint8_t private_key[IOTEX_PRIVATE_KEY_SIZE], uint8_t signature[IOTEX_SIGNATURE_SIZE])</td></tr>
+<tr class="memitem:af557b71342872d12c910b668bb8e8392"><td class="memItemLeft" align="right" valign="top">ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#af557b71342872d12c910b668bb8e8392">signHash</a> (const uint8_t hash[IOTEX_HASH_SIZE], const uint8_t private_key[IOTEX_PRIVATE_KEY_SIZE], uint8_t signature[IOTEX_SIGNATURE_SIZE])</td></tr>
+<tr class="memdesc:af557b71342872d12c910b668bb8e8392"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sign a hash.  <a href="classiotex_1_1_signer.html#af557b71342872d12c910b668bb8e8392">More...</a><br /></td></tr>
 <tr class="separator:af557b71342872d12c910b668bb8e8392"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2906181140055beffb6e4eaad1340dcb"><td class="memItemLeft" align="right" valign="top"><a id="a2906181140055beffb6e4eaad1340dcb" name="a2906181140055beffb6e4eaad1340dcb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>signMessage</b> (const uint8_t *message, size_t size, const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE], uint8_t signature[IOTEX_SIGNATURE_SIZE])</td></tr>
+<tr class="memitem:a2906181140055beffb6e4eaad1340dcb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#a2906181140055beffb6e4eaad1340dcb">signMessage</a> (const uint8_t *message, size_t size, const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE], uint8_t signature[IOTEX_SIGNATURE_SIZE])</td></tr>
+<tr class="memdesc:a2906181140055beffb6e4eaad1340dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sign an ethereum message.  <a href="classiotex_1_1_signer.html#a2906181140055beffb6e4eaad1340dcb">More...</a><br /></td></tr>
 <tr class="separator:a2906181140055beffb6e4eaad1340dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b50a4c0f4f872f92ddbc6953ad3bfd8"><td class="memItemLeft" align="right" valign="top"><a id="a8b50a4c0f4f872f92ddbc6953ad3bfd8" name="a8b50a4c0f4f872f92ddbc6953ad3bfd8"></a>
-ResultCode&#160;</td><td class="memItemRight" valign="bottom"><b>hex2str</b> (const uint8_t *hex, size_t hex_size, char *str, size_t str_size)</td></tr>
+<tr class="memitem:a8b50a4c0f4f872f92ddbc6953ad3bfd8"><td class="memItemLeft" align="right" valign="top">ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#a8b50a4c0f4f872f92ddbc6953ad3bfd8">hex2str</a> (const uint8_t *hex, size_t hex_size, char *str, size_t str_size)</td></tr>
+<tr class="memdesc:a8b50a4c0f4f872f92ddbc6953ad3bfd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a byte array to a hex string.  <a href="classiotex_1_1_signer.html#a8b50a4c0f4f872f92ddbc6953ad3bfd8">More...</a><br /></td></tr>
 <tr class="separator:a8b50a4c0f4f872f92ddbc6953ad3bfd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05333752cc09a04415d131fc4b877c14"><td class="memItemLeft" align="right" valign="top"><a id="a05333752cc09a04415d131fc4b877c14" name="a05333752cc09a04415d131fc4b877c14"></a>
-ResultCode&#160;</td><td class="memItemRight" valign="bottom"><b>str2hex</b> (const char *str, uint8_t *hex, size_t size)</td></tr>
+<tr class="memitem:a05333752cc09a04415d131fc4b877c14"><td class="memItemLeft" align="right" valign="top">ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_signer.html#a05333752cc09a04415d131fc4b877c14">str2hex</a> (const char *str, uint8_t *hex, size_t size)</td></tr>
+<tr class="memdesc:a05333752cc09a04415d131fc4b877c14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a hex string to a byte array.  <a href="classiotex_1_1_signer.html#a05333752cc09a04415d131fc4b877c14">More...</a><br /></td></tr>
 <tr class="separator:a05333752cc09a04415d131fc4b877c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="afddb6469e038861c49b8b819e787c547" name="afddb6469e038861c49b8b819e787c547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afddb6469e038861c49b8b819e787c547">&#9670;&nbsp;</a></span>getEthereumMessageHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Signer::getEthereumMessageHash </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pMsg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>hash</em>[IOTEX_HASH_SIZE]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Ethereum Message hash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pMsg</td><td>A pointer to a byte array containing the message to hash </td></tr>
+    <tr><td class="paramname">length</td><td>The length of the message in bytes </td></tr>
+    <tr><td class="paramname">hash</td><td>The generated hash </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72b1fd6d4105cf589e820ec314373125" name="a72b1fd6d4105cf589e820ec314373125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72b1fd6d4105cf589e820ec314373125">&#9670;&nbsp;</a></span>getHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Signer::getHash </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>hash</em>[IOTEX_HASH_SIZE]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the kekkac 256 hash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">pData</td><td>A pointer to a byte array containing the data to hash </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>The size of the data in bytes </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hash</td><td>The generated hash </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a010b8752d10b60c550ad7de40122000e" name="a010b8752d10b60c550ad7de40122000e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010b8752d10b60c550ad7de40122000e">&#9670;&nbsp;</a></span>getPublicKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Signer::getPublicKey </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>privateKey</em>[IOTEX_PRIVATE_KEY_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>publicKey</em>[IOTEX_PUBLIC_KEY_SIZE]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the public key from the private key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">privateKey</td><td></td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">publicKey</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b50a4c0f4f872f92ddbc6953ad3bfd8" name="a8b50a4c0f4f872f92ddbc6953ad3bfd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b50a4c0f4f872f92ddbc6953ad3bfd8">&#9670;&nbsp;</a></span>hex2str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultCode Signer::hex2str </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>hex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>hex_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>str_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert a byte array to a hex string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">hex</td><td>A pointer to the array </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">hex_size</td><td>The array size </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">str</td><td>A pointer to a buffer where to store the hex string </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">str_size</td><td>The size of the hex string buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode Success or an error code </dd></dl>
+
+</div>
+</div>
+<a id="af557b71342872d12c910b668bb8e8392" name="af557b71342872d12c910b668bb8e8392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af557b71342872d12c910b668bb8e8392">&#9670;&nbsp;</a></span>signHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultCode Signer::signHash </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>hash</em>[IOTEX_HASH_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>private_key</em>[IOTEX_PRIVATE_KEY_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>signature</em>[IOTEX_SIGNATURE_SIZE]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sign a hash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">hash</td><td>The hash to sign </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">private_key</td><td>The private key to use for signing </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signature</td><td>The signature produced </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode Success or an error code </dd></dl>
+
+</div>
+</div>
+<a id="a2906181140055beffb6e4eaad1340dcb" name="a2906181140055beffb6e4eaad1340dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2906181140055beffb6e4eaad1340dcb">&#9670;&nbsp;</a></span>signMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Signer::signMessage </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>privateKey</em>[IOTEX_PRIVATE_KEY_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>signature</em>[IOTEX_SIGNATURE_SIZE]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sign an ethereum message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">message</td><td>A pointer to a byte array containing the message to sign </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>The size of the mesage </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">privateKey</td><td>The private key to use for signing </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signature</td><td>The signature produced </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05333752cc09a04415d131fc4b877c14" name="a05333752cc09a04415d131fc4b877c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05333752cc09a04415d131fc4b877c14">&#9670;&nbsp;</a></span>str2hex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResultCode Signer::str2hex </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>hex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert a hex string to a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">str</td><td>The hex string. Must be null terminated </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">hex</td><td>A pointer to a buffer where to store the bytes </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">size</td><td>The size of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode Success or an error code </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/signer/<a class="el" href="signer_8h_source.html">signer.h</a></li>
 <li>src/signer/signer.cpp</li>

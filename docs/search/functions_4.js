@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readprivatekey_0',['readPrivateKey',['../classiotex_1_1_storage.html#a82ae33ed685c98cce90a3c52eff5c98a',1,'iotex::Storage']]]
+  ['hex2str_0',['hex2str',['../classiotex_1_1_signer.html#a8b50a4c0f4f872f92ddbc6953ad3bfd8',1,'iotex::Signer']]]
 ];
