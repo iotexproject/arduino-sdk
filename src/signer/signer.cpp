@@ -94,22 +94,6 @@ void Signer::getPublicKey(const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE],
 	ecdsa_get_public_key65(&secp256k1, privateKey, publicKey);
 }
 
-ResultCode Signer::getSignature(const uint8_t* data, size_t size,
-								const uint8_t private_key[IOTEX_PRIVATE_KEY_SIZE],
-								uint8_t signature[IOTEX_SIGNATURE_SIZE])
-{
-	uint8_t digest[IOTEX_HASH_SIZE] = {0};
-
-	getHash(data, size, digest);
-
-	if(ecdsa_sign_digest(&secp256k1, private_key, digest, signature, signature + 64, NULL) != 0)
-	{
-		return ResultCode::ERROR_SIGNATURE;
-	}
-
-	return ResultCode::SUCCESS;
-}
-
 ResultCode Signer::signHash(const uint8_t hash[IOTEX_HASH_SIZE],
 							const uint8_t private_key[IOTEX_PRIVATE_KEY_SIZE],
 							uint8_t signature[IOTEX_SIGNATURE_SIZE])

@@ -54,6 +54,7 @@ class IHTTP
 	{
 		return -1;
 	};
+
 	virtual int post(const char* request, const char* body, char* rspBuf, size_t size)
 	{
 		return -1;
