@@ -33,7 +33,10 @@ Purpose :
 *
 **********************************************************************
 */
+
+#ifndef __FILENAME__
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
+#endif
 
 #define LOG_MSG(level, module, ...) log(level, module, __FILENAME__, __LINE__, __VA_ARGS__)  
 #define LOG_BUF(level, module, buffer, size) log_buffer(level, module, buffer, size, __FILENAME__, __LINE__)  
