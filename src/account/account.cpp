@@ -63,7 +63,7 @@ void Account::getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE])
 
 void Account::getEthereumAddressBytes(uint8_t buffer[ETH_ADDRESS_SIZE])
 {
-	signer.str2hex(_ethAddr.c_str(), buffer, sizeof(buffer));
+	signer.str2hex(_ethAddr.c_str(), buffer, ETH_ADDRESS_SIZE);
 }
 
 void Account::getPublicKey(uint8_t buffer[IOTEX_PUBLIC_KEY_SIZE])
