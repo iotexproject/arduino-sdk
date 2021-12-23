@@ -66,7 +66,7 @@ void loop() {
 
     // Convert the privte key to a byte array
     uint8_t pk[IOTEX_PRIVATE_KEY_SIZE];
-    signer.str2hex(pK, pk, IOTEX_SIGNATURE_SIZE);
+    signer.str2hex(pK, pk, IOTEX_PRIVATE_KEY_SIZE);
 
     // Create the account 
     Account originAccount(pk);
