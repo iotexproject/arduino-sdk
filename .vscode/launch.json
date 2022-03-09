@@ -23,21 +23,10 @@
                     "ignoreFailures": true
                 }
             ],
+            "stopAtEntry": false,
             // "sourceFileMap": {
             //     // "lookedSource": "actualSource"
             // }
-        },
-        {
-            "name": "Unit tests - launch - clang++/lldb",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/tests/iotex_unit_tests",
-            "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "Arduino: Build unit tests",
         }
     ]
 }

@@ -96,13 +96,13 @@ target_link_libraries(iotex-client
 # Use `cmake -DUNIT_TEST=ON ..` to enable unit test build
 # ------------------------------------------------------------------------------
 
-option(UNIT_TEST "Unit tests disabled by default" OFF)
+option(UNIT_TEST "Unit tests disabled by default" ON)
 
 if(UNIT_TEST)
     add_subdirectory(tests)
 endif()
 
-SET(LOG_LEVEL "IOTEX_LOG_LEVEL_NONE" CACHE STRING "The level for debug logs. Set to none by default")
+SET(LOG_LEVEL "NONE" CACHE STRING "The level for debug logs. Set to none by default")
 target_compile_definitions(iotex-client
     PUBLIC IOTEX_LOG_LEVEL=IOTEX_LOG_LEVEL_${LOG_LEVEL}
 )
