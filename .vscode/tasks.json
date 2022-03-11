@@ -19,6 +19,50 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }
+        },
+        {
+            "type": "shell",
+            "label": "Http-grpc server: start",
+            "command": "envoy -c envoy-conf.yaml",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "{command:workbench.files.action.saveAllInGroup}",
+                "Http-grpc server: generate protobufs"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "Http-grpc server: stop",
+            "command": "killall envoy",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "Http-grpc server: generate protobufs",
+            "command": "./generate_proto.sh --clone",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "{command:workbench.files.action.saveAllInGroup}"
+            ],
+            "dependsOrder": "sequence"
+        },
     ]
 }
