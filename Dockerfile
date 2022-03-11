@@ -28,6 +28,7 @@ RUN mkdir /workdir/project && \
         curl \
         lsb-release \
         protobuf-compiler \
+        psmisc \
         libcurl4-gnutls-dev && \
     apt-get -y clean && apt-get -y autoremove && \
     # Latest PIP & Python dependencies
@@ -40,17 +41,17 @@ RUN mkdir /workdir/project && \
     python3 -m pip install -U six && \
     apt-get -y install clang-format
 
-# Download sdk-nrf and west dependencies to install pip requirements
-# FROM base
-# ARG sdk_nrf_revision=main
-# RUN \
-#     mkdir tmp && cd tmp && \
-#     west init -m https://github.com/nrfconnect/sdk-nrf --mr ${sdk_nrf_revision} && \
-#     west update --narrow -o=--depth=1 && \
-#     python3 -m pip install -r zephyr/scripts/requirements.txt && \
-#     python3 -m pip install -r nrf/scripts/requirements.txt && \
-#     python3 -m pip install -r bootloader/mcuboot/scripts/requirements.txt && \
-#     cd .. && rm -rf tmp
+# Envoy - for grpc-http server
+RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/getenvoy.list && \
+    apt update && \
+    apt install -y getenvoy-envoy
+
+# Protoc - required for envoy
+RUN mkdir -p /workdir/google/api
+WORKDIR /workdir/google/api && \
+    wget https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto  && \
+    wget https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto
 
 WORKDIR /workdir/project
 ENV LC_ALL=C.UTF-8
