@@ -27,6 +27,15 @@
             // "sourceFileMap": {
             //     // "lookedSource": "actualSource"
             // }
-        }
+        },
+        {
+            "name": "Server fake: launch",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/server-fake/server_fake.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/tools/server-fake",
+        },
     ]
 }
