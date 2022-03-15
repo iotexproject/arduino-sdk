@@ -12,6 +12,8 @@ extern/nanopb/tools/*
 encoded_actioncore.bin
 tests/**/secrets.h
 examples/**/.gitignore
-
+**/node_modules
+**/package-lock.json
+**/__pycache__
 Notes.md
 .DS_Store
