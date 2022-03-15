@@ -64,5 +64,20 @@
             ],
             "dependsOrder": "sequence"
         },
+        {
+            "type": "shell",
+            "label": "Fake http-grpc server: launch",
+            "command": "python3 server_fake.py",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server-fake"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "{command:workbench.files.action.saveAllInGroup}"
+            ],
+            "dependsOrder": "sequence"
+        },
     ]
 }

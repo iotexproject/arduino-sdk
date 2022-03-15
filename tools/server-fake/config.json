@@ -1,0 +1,94 @@
+{
+    "port": 10000,
+    "mapping": [
+        {
+            "requestPath": "ReadContract",
+            "pathMapping": [
+                {
+                    "description": "Get VITA balance for the test address (io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk). Private key with all ones.",
+                    "requestBody": {
+                        "execution": {
+                            "amount": "",
+                            "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
+                            "data": "cKCCMQAAAAAAAAAAAAAAABnn43bnwhO35+fkbMcKXdCG2v8q"
+                        },
+                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "gasLimit": "200000"
+                    },
+                    "grpcStatus": "success",
+                    "grpcMessage": "",
+                    "responseBody": {
+                        "data": "0000000000000000000000000000000000000000000000000de0b6b3a7640000",
+                        "receipt": {
+                            "status": "1",
+                            "blkHeight": "16333441",
+                            "actHash": "WivWU9oSe6Q6+QFLSFsSjG+Glyhn62Jt8Ewn+hf0N9U=",
+                            "gasConsumed": "15334",
+                            "contractAddress": "",
+                            "logs": [],
+                            "executionRevertMsg": "",
+                            "txIndex": 0
+                        }
+                    },
+                    "responseCode": 200
+                },
+                {
+                    "description": "Return a response with missing optional fields",
+                    "requestBody": {
+                        "execution": {
+                            "amount": "MissingOptionalFields",
+                            "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
+                            "data": ""
+                        },
+                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "gasLimit": "200000"
+                    },
+                    "grpcStatus": "success",
+                    "grpcMessage": "",
+                    "responseBody": {
+                        "data": "",
+                        "receipt": {
+                            "status": "1",
+                            "blkHeight": "1",
+                            "actHash": "",
+                            "gasConsumed": "1"
+                        }
+                    },
+                    "responseCode": 200
+                },
+                {
+                    "description": "Return a 400 error",
+                    "requestBody": {
+                        "execution": {
+                            "amount": "Get400Error",
+                            "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
+                            "data": ""
+                        },
+                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "gasLimit": "200000"
+                    },
+                    "grpcStatus": "",
+                    "grpcMessage": "",
+                    "responseBody": {},
+                    "responseCode": 400
+                },
+                {
+                    "description": "Return a 500 error",
+                    "requestBody": {
+                        "execution": {
+                            "amount": "Get500Error",
+                            "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
+                            "data": ""
+                        },
+                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "gasLimit": "200000"
+                    },
+                    "grpcStatus": "",
+                    "grpcMessage": "",
+                    "responseBody": {},
+                    "responseCode": 400
+                }
+            ]
+        }
+    ]
+}
