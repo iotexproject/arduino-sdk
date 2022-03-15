@@ -2,11 +2,38 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Unit tests - launch",
+            "name": "Unit tests: launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/tests/iotex_unit_tests",
-            // "args": [ "--gtest_filter=\"*.Transaction*\""],
+            "args": [
+                // "--gtest_filter=\"*.ReadContract*\""
+            ],
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Enable all-exceptions",
+                    "text": "catch throw",
+                    "ignoreFailures": true
+                }
+            ],
+            "stopAtEntry": false
+        },
+        {
+            "name": "Unit tests: rebuild and launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/tests/iotex_unit_tests",
+            "args": [
+                // "--gtest_filter=\"*.ReadContract*\""
+            ],
             "cwd": "${workspaceFolder}",
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
@@ -24,9 +51,6 @@
                 }
             ],
             "stopAtEntry": false,
-            // "sourceFileMap": {
-            //     // "lookedSource": "actualSource"
-            // }
         },
         {
             "name": "Server fake: launch",

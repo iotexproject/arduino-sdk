@@ -4,7 +4,7 @@
         {
             "type": "shell",
             "label": "Arduino: Build unit tests",
-            "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ../ && make -j 6",
+            "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ../ && make",
             "options": {
                 "cwd": "${workspaceRoot}/"
             },
@@ -42,6 +42,19 @@
             "command": "killall envoy",
             "options": {
                 "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [ "Http-grpc server: generate protobufs" ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "Http-grpc server: restart",
+            "command": "killall envoy && envoy -c envoy-conf.yaml",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server"
             },
             "problemMatcher": [
                 "$gcc"
