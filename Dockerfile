@@ -53,10 +53,14 @@ WORKDIR /workdir/google/api && \
     wget https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto  && \
     wget https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto
 
+# NodeJs and npm - for abi decoder script (tools/abiDecoder.js)
+WORKDIR /workdir/project/tools
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nodejs && \
+    apt-get -y update && \
+    apt-get -y install npm && \
+    npm install abi-decoder web3
+
 WORKDIR /workdir/project
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV XDG_CACHE_HOME=/workdir/.cache
-
-# Add variables or paths if needed
-# ENV PATH="${ZEPHYR_BASE}/scripts:${PATH}"
