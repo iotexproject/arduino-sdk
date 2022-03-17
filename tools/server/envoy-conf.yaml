@@ -8,7 +8,7 @@ static_resources:
     address:
       socket_address:
         address: 0.0.0.0
-        port_value: 10000
+        port_value: 10001
     filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
@@ -33,6 +33,7 @@ static_resources:
               "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder
               proto_descriptor: "/workspaces/iotex-client/tools/server/proto/out/api.pb"
               services: ["iotexapi.APIService"]
+              auto_mapping: true
               print_options:
                 add_whitespace: true
                 always_print_primitive_fields: true
@@ -58,5 +59,6 @@ static_resources:
         - endpoint:
             address:
               socket_address:
+                # address: api.iotex.one
                 address: api.testnet.iotex.one
                 port_value: 80
