@@ -2,6 +2,127 @@
     "port": 10000,
     "mapping": [
         {
+            "requestPath": "GetActions",
+            "pathMapping": [
+                {
+                    "description": "Get action details for the test transaction hash (e19dfb0c84799fc43217287d0d81369348279a0b3b32d0ad2f973ee5aaa392ae)",
+                    "requestBody": {
+                        "byHash": {
+                            "actionHash": "e19dfb0c84799fc43217287d0d81369348279a0b3b32d0ad2f973ee5aaa392ae",
+                            "checkPending": false
+                        }
+                    },
+                    "grpcStatus": "success",
+                    "grpcMessage": "",
+                    "responseBody": {
+                        "total": "1",
+                        "actionInfo": [
+                            {
+                                "action": {
+                                    "core": {
+                                        "version": 0,
+                                        "nonce": "19",
+                                        "gasLimit": "21000",
+                                        "gasPrice": "1000000000000",
+                                        "chainID": 0,
+                                        "transfer": {
+                                            "amount": "1000000000000000000",
+                                            "recipient": "io1w3egd539q90jauqumvg09v3kv2hpqsy2mwym0q",
+                                            "payload": "test-payload"
+                                        }
+                                    },
+                                    "senderPubKey": "BBEUzF7ETUgLUaIoWXHUELMR1nYf3XLxSMKfIRsuJC1+oUuKtDptd4rIVc5lADqeEGl2Wme0YKQHyP22IPmEB5A=",
+                                    "signature": "WC9/nl3gpnIvt4HdibVGG4gZrAolg+c1hFQ5sL5e22US92ymx9QZiiaEO3s2/fDCPamjuAxP2IF4dl7zs5XfqRs=",
+                                    "encoding": "ETHEREUM_RLP"
+                                },
+                                "actHash": "e19dfb0c84799fc43217287d0d81369348279a0b3b32d0ad2f973ee5aaa392ae",
+                                "blkHash": "81c03186a0374154a6c898e64a675d33784b2086006790afa0ebc2591be97d08",
+                                "blkHeight": "13208023",
+                                "sender": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                                "gasFee": "10000000000000000",
+                                "index": 6,
+                                "timestamp": "2021-09-14T07:14:40Z"
+                            }
+                        ]
+                    },
+                    "responseCode": 200
+                },
+                {
+                    "description": "Get action details for the test execution hash (55b172298e80dff0fa929c7c7f7ecc266baf48e33aa226b3fd48d4de870b1efa)",
+                    "requestBody": {
+                        "byHash": {
+                            "actionHash": "55b172298e80dff0fa929c7c7f7ecc266baf48e33aa226b3fd48d4de870b1efa",
+                            "checkPending": false
+                        }
+                    },
+                    "grpcStatus": "success",
+                    "grpcMessage": "",
+                    "responseBody": {
+                        "total": "1",
+                        "actionInfo": [
+                            {
+                                "action": {
+                                    "core": {
+                                        "version": 1,
+                                        "nonce": "729",
+                                        "gasLimit": "1000000",
+                                        "gasPrice": "1000000000000",
+                                        "chainID": 0,
+                                        "execution": {
+                                            "amount": "1000000000000000000",
+                                            "contract": "io12s9f9hv4zsr7umy5hxt6g0k0xr4x6pxdp5w998",
+                                            "data": "8hMVnAAAAAAAAAAAAAAAAI5mwNa3DAsj059LIaHqxSu6jtiaAAAAAAAAAAAAAAAApThiOA00qEE6+v2PM8qeKxzAwJ8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG8FtZ07IAAA==",
+                                            "accessList": []
+                                        }
+                                    },
+                                    "senderPubKey": "BJtPtoWy0iC/dlEq6kiuW7e94u4PONPobDpxEZDSrhTO8fRMmsvBg1u34jA5Esm4/ej5q5Gzgh0xocRRdn7iLFE=",
+                                    "signature": "U+7oW3zCo1MsU2DIRRBnTW5I6vywqSf1IyjQ4iyo87xCoCRdj5CbbFWiLRD7pz0ZbXBE2x9WWiQO1Hbbh86NpwA=",
+                                    "encoding": "IOTEX_PROTOBUF"
+                                },
+                                "actHash": "55b172298e80dff0fa929c7c7f7ecc266baf48e33aa226b3fd48d4de870b1efa",
+                                "blkHash": "de2790219a38a0abcc49993bd7c9b1179cd5f850036bc3e310b9c9ce5816f54e",
+                                "blkHeight": "11625139",
+                                "sender": "io1dvfjg5xxnzpydnmq2q0n0n0ham2arytkkvrr2h",
+                                "gasFee": "49065000000000000",
+                                "index": 0,
+                                "timestamp": "2021-06-14T10:14:00Z"
+                            }
+                        ]
+                    },
+                    "responseCode": 200
+                }
+            ]
+        },
+        {
+            "requestPath": "GetAccount",
+            "pathMapping": [
+                {
+                    "description": "Read account details for the test address (io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk). Private key with all ones.",
+                    "requestBody": {
+                        "address": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk"
+                    },
+                    "grpcStatus": "success",
+                    "grpcMessage": "",
+                    "responseBody": {
+                        "accountMeta": {
+                            "address": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk",
+                            "balance": "100000000000000000",
+                            "nonce": "3",
+                            "pendingNonce": "4",
+                            "numActions": "5",
+                            "isContract": false,
+                            "contractByteCode": ""
+                        },
+                        "blockIdentifier": {
+                            "hash": "3e2297269f1bfd7301f8a82728f2be672beb8388840bab4a086d164c745c3c61",
+                            "height": "16348242"
+                        }
+                    },
+                    "responseCode": 200
+                }
+            ]
+        },
+        {
             "requestPath": "ReadContract",
             "pathMapping": [
                 {
@@ -12,7 +133,7 @@
                             "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
                             "data": "cKCCMQAAAAAAAAAAAAAAABnn43bnwhO35+fkbMcKXdCG2v8q"
                         },
-                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "callerAddress": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk",
                         "gasLimit": "200000"
                     },
                     "grpcStatus": "success",
@@ -40,7 +161,7 @@
                             "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
                             "data": ""
                         },
-                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "callerAddress": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk",
                         "gasLimit": "200000"
                     },
                     "grpcStatus": "success",
@@ -64,7 +185,7 @@
                             "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
                             "data": ""
                         },
-                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "callerAddress": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk",
                         "gasLimit": "200000"
                     },
                     "grpcStatus": "",
@@ -80,13 +201,43 @@
                             "contract": "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw",
                             "data": ""
                         },
-                        "callerAddress": "io1l5cqp670fmqgyfttux85e3y362jxnlmpskgeus",
+                        "callerAddress": "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk",
                         "gasLimit": "200000"
                     },
                     "grpcStatus": "",
                     "grpcMessage": "",
                     "responseBody": {},
                     "responseCode": 400
+                }
+            ]
+        },
+        {
+            "requestPath": "SendAction",
+            "pathMapping": [
+                {
+                    "description": "Return a GRPC invalid nonce error",
+                    "requestBody": {
+                        "action": {
+                            "core": {
+                                "version": 1,
+                                "nonce": "0",
+                                "gasLimit": "20000000",
+                                "gasPrice": "1000000000000",
+                                "execution": {
+                                    "amount": "GetInvalidNonce",
+                                    "contract": "",
+                                    "data": ""
+                                }
+                            },
+                            "senderPubKey": "BE81W9y3zAr3KO88zrlhXZBoS7Wyyl+FmrDwtwQHWHGqOFtrG46tgJymdFTZaD/PK6A0Vtb+LEq+Kwfw+9uy8cE=",
+                            "signature": "fAZQJKQmKNMj+wliPkiLBKthYOh7dpRWv2q/6IR2XAh/DtAsEfL7mdNm9zC51Wazd96Ft2VcjI+NHg1+HIE0jQE=",
+                            "encoding": "IOTEX_PROTOBUF"
+                        }
+                    },
+                    "grpcStatus": "failed_known_transaction",
+                    "grpcMessage": "known transaction",
+                    "responseBody": {},
+                    "responseCode": 500
                 }
             ]
         }

@@ -6,7 +6,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "secrets.h"
+#include "constants.h"
 
 #include "account/account.h"
 #include "contract/contract.h"
@@ -18,55 +18,11 @@ using namespace iotex;
 using namespace iotex::responsetypes;
 using namespace iotex::abi;
 
-namespace
-{
-    const std::string ethAddr = ETH_ADDRESS;
-    const std::string iotexAddr = IOTEX_ADDRESS;
-    const std::string privateKey = PRIVATE_KEY;
-    const std::string publicKey = PUBLIC_KEY;
-
-    class Wallet
-    {
-        public:
-            Wallet(std::string eth, std::string iotex, std::string privateKeyStr, std::string publicKeyStr)
-            {
-                ethAddr = eth;
-                iotexAddr = iotex;
-                signer.str2hex(privateKeyStr.c_str(), privateKey, sizeof(privateKey));
-                signer.str2hex(publicKeyStr.c_str(), publicKey, sizeof(publicKey));
-            }
-
-            uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE];
-            uint8_t publicKey[IOTEX_PUBLIC_KEY_SIZE];
-            std::string ethAddr;
-            std::string iotexAddr;
-    };
-
-    void printhex(uint8_t* data, int length)
-    {
-        for (uint8_t i = 0; i < length; i++)
-        {
-            printf("%02x", data[i]);
-        }
-        printf("\n");
-    }
-    
-    void printdec(uint8_t* data, int length)
-    {
-        for (uint8_t i = 0; i < length; i++)
-        {
-            printf("%u ", data[i]);
-        }
-        printf("\n");
-    }
-}
-
 class AccountTests_Execution : public Test
 {
     public:
         AccountTests_Execution() :
-            testWallet(ethAddr, iotexAddr, privateKey, publicKey), 
-            account(testWallet.privateKey)
+            account(testAddressPrivateKeyBytes)
         {
             std::string file = std::string(TESTFILESDIR) + std::string("erc20tokenAbi.json");
             std::ifstream ifs(file);
@@ -75,91 +31,27 @@ class AccountTests_Execution : public Test
             contract = new Contract(content);
         }
 
-        Wallet testWallet;
+        // Wallet testWallet;
         Account account;
         Contract *contract;
 };
 
-TEST_F(AccountTests_Execution, signExecutionAction)
-{
-    ActionCore_Execution core;
-    uint8_t signature[IOTEX_SIGNATURE_SIZE] = {0};
-
-    const char gasPrice[] = "1000000000000";
-    const char amount[] = "0";
-    const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
-    const char dataStr[] = "00000000";
-    const char expectedSignatureStr[] = "105dca6593d5d8c229a833901f9262d95cc05b3f9056534d5f31bcdc8fdddbed61bad38c95be2d0f68b3f437b40e2a80556d991b738725820b05b09ca4ea9e7100";
-    uint8_t expectedSignature[IOTEX_SIGNATURE_SIZE] = {0};
-    signer.str2hex(expectedSignatureStr, expectedSignature, IOTEX_SIGNATURE_SIZE);
-
-    core.version = 1;
-    core.nonce = 5;
-    core.gasLimit = 20000000;
-    strcpy(core.gasPrice, gasPrice);
-    strcpy(core.execution.amount, amount);
-    strcpy(core.execution.contract, contractAddr);
-    core.execution.data = dataStr;
-
-    uint8_t hash[IOTEX_HASH_SIZE] = {0};
-
-    account.signExecutionAction(core, signature, hash);
-
-    // uint8_t encodedCore[1024] = {0};
-    // size_t encodedCoreSize = encoder.protobuf_encodeExecution(core, encodedCore, sizeof(encodedCore));
-    // cout << "Proto: " << endl;
-    // printhex(encodedCore, encodedCoreSize);
-    // cout << "Hash: " << endl;
-    // printhex(hash, sizeof(hash));
-    // cout << "Signature: " << endl;
-    // printhex(signature, sizeof(signature));
-
-    ASSERT_EQ(0, memcmp(expectedSignature, signature, IOTEX_SIGNATURE_SIZE));
-}
-
-TEST_F(AccountTests_Execution, sendExecution_getTotalSupply_producesCorrectSignature)
-{    
-    uint8_t actionHash[IOTEX_HASH_SIZE];
-    const char gasPrice[] = "1000000000000";
-    const char amount[] = "0";
-    const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
-    std::string dataStr = "";
-    const char expectedSignatureStr[] = "de76e7766d3cb41e55e410f5ca27ad2b4ed505834a9268ddfb169cdbc4d9e9582210e628f1192fedba77959763ef25447b9cc3cde825f165c5468991d06e1d4601";
-    uint8_t expectedSignature[IOTEX_SIGNATURE_SIZE] = {0};
-    signer.str2hex(expectedSignatureStr, expectedSignature, IOTEX_SIGNATURE_SIZE);
-    ParameterValuesDictionary params;
-
-    contract->generateCallData("totalSupply", params, dataStr);
-
-    ActionCore_Execution core;
-    core.version = 1;
-    core.nonce = 5;
-    core.gasLimit = 20000000;
-    strcpy(core.gasPrice, gasPrice);
-    strcpy(core.execution.amount, amount);
-    strcpy(core.execution.contract, contractAddr);
-    core.execution.data = dataStr;
-
-    uint8_t signature[IOTEX_SIGNATURE_SIZE] = {0};
-    account.signExecutionAction(core, signature);
-
-    ASSERT_EQ(0, memcmp(expectedSignature, signature, IOTEX_SIGNATURE_SIZE));
-}
+// --------------------- generateCallData  ------------------------------
 
 TEST_F(AccountTests_Execution, sendExecution_transfer_producesCorrectCallData)
 {    
+    // Action hash: https://testnet.iotexscan.io/action/475458447962be19ff1b078eb3e0bb950a97bdf3eccea17fe9f7d2ff8d53edfb
     uint8_t actionHash[IOTEX_HASH_SIZE];
     const char gasPrice[] = "1000000000000";
     const char amount[] = "0";
     const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
     std::string callData = "";
-    const char expectedCallData[] = "a9059cbb000000000000000000000000fd3000ebcf4ec082256be18f4cc491d2a469ff610000000000000000000000000000000000000000000000000000000000000001";
+    const char expectedCallData[] = "a9059cbb00000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2b0000000000000000000000000000000000000000000000000000000000000001";
     ParameterValuesDictionary params;
 
     ParameterValue paramTo;
-    uint8_t toAddress[ETH_ADDRESS_SIZE];
-    const char toAddressStr[] = ETH_ADDRESS;
-    signer.str2hex(toAddressStr, toAddress, ETH_ADDRESS_SIZE);
+    uint8_t toAddress[ETH_ADDRESS_SIZE] = {0};
+    memcpy(toAddress, testAddress2EthBytes, ETH_ADDRESS_SIZE);
     paramTo.value.bytes = toAddress;
     paramTo.size = ETH_ADDRESS_SIZE;
     params.AddParameter("_to", paramTo);    
@@ -175,18 +67,18 @@ TEST_F(AccountTests_Execution, sendExecution_transfer_producesCorrectCallData)
 
 TEST_F(AccountTests_Execution, sendExecution_balanceOf_producesCorrectCallData)
 {    
+    // Action hash: https://testnet.iotexscan.io/action/c5eb108f9d4491c9fd48f6bc2c557f954fb4d17235ced341899d4bd6b63bf6c4
     uint8_t actionHash[IOTEX_HASH_SIZE];
     const char gasPrice[] = "1000000000000";
     const char amount[] = "0";
     const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
     std::string callData = "";
-    const char expectedCallData[] = "70a08231000000000000000000000000fd3000ebcf4ec082256be18f4cc491d2a469ff61";
+    const char expectedCallData[] = "70a0823100000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2b";
     ParameterValuesDictionary params;
 
+    uint8_t toAddress[ETH_ADDRESS_SIZE] = {0};
+    memcpy(toAddress, testAddress2EthBytes, ETH_ADDRESS_SIZE);
     ParameterValue paramTo;
-    uint8_t toAddress[ETH_ADDRESS_SIZE];
-    const char toAddressStr[] = ETH_ADDRESS;
-    signer.str2hex(toAddressStr, toAddress, ETH_ADDRESS_SIZE);
     paramTo.value.bytes = toAddress;
     paramTo.size = ETH_ADDRESS_SIZE;
     params.AddParameter("_owner", paramTo);    
@@ -197,6 +89,7 @@ TEST_F(AccountTests_Execution, sendExecution_balanceOf_producesCorrectCallData)
 
 TEST_F(AccountTests_Execution, sendExecution_sendData_producesCorrectCallData)
 {    
+    // Action hash: https://testnet.iotexscan.io/action/5bcb7ee42d3d8e9f524c9458d30ff4a032480679e7d0bfd3f8a66ccd8f452b6b
     std::string file = std::string(TESTFILESDIR) + std::string("addData.json");
     std::ifstream ifs(file);
     std::string content( (std::istreambuf_iterator<char>(ifs) ),
@@ -232,21 +125,19 @@ TEST_F(AccountTests_Execution, sendExecution_sendData_producesCorrectCallData)
     ASSERT_STREQ(expectedCallData, callData.c_str());
 }
 
+// --------------------- signExecution  ------------------------------
 
-
-
-// Signature
 TEST_F(AccountTests_Execution, sendExecution_producesCorrectSignature)
 {
-    const char callData[] = "a9059cbb000000000000000000000000fd3000ebcf4ec082256be18f4cc491d2a469ff610000000000000000000000000000000000000000000000000000000000000001";
-    const char expectedSignatureStr[] = "5e18a11445ff8427ce4f1fb4116e801eec3f1ac96ce072a56ba0afe22a6ec6566080ba1805eb488e28bf56512eea08aa4a16d5531975b9f7186821dda191fc0501";
+    const char callData[] = "70a0823100000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2b";
+    const char expectedSignatureStr[] = "36d727f0fa8499281ad6dc234ed6005bfaefc3e0e7c9a560b24ce32ce913e648433a2406be15a8623e98dae2c7cf08cc616aaa6c6036c8bceb5a47a74ca83ee401";
 
     const char gasPrice[] = "1000000000000";
     const char amount[] = "0";
     const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
     ActionCore_Execution core;
     core.version = 1;
-    core.nonce = 7;
+    core.nonce = 3;
     core.gasLimit = 20000000;
     strcpy(core.gasPrice, gasPrice);
     strcpy(core.execution.amount, amount);
@@ -259,4 +150,50 @@ TEST_F(AccountTests_Execution, sendExecution_producesCorrectSignature)
     signer.hex2str(signature, IOTEX_SIGNATURE_SIZE, signatureStr, sizeof(signatureStr));
 
     ASSERT_STREQ(expectedSignatureStr, signatureStr);
+}
+
+TEST_F(AccountTests_Execution, sendExecution_getTotalSupply_producesCorrectSignature)
+{    
+    // Action hash: https://testnet.iotexscan.io/action/7fd783d6010912f9002a2d4ea47d110fbc76f8d5f30101407443ef47228c4207
+    uint8_t actionHash[IOTEX_HASH_SIZE];
+    const char gasPrice[] = "1000000000000"; // 0.000001 IOTX
+    const char amount[] = "0";
+    const char contractAddr[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
+    std::string dataStr = "";
+    const char expectedSignatureStr[] = "9ad701f0e07765a8bd90b36535e61f694a5339399b56fe5b4dc2bfda27f6907f7b597634aba1fb13a14d5b1634b47b841e5daa9484ad7a928818940bfcfb702b00";
+    uint8_t expectedSignature[IOTEX_SIGNATURE_SIZE] = {0};
+    signer.str2hex(expectedSignatureStr, expectedSignature, IOTEX_SIGNATURE_SIZE);
+    ParameterValuesDictionary params;
+
+    contract->generateCallData("totalSupply", params, dataStr);
+
+    ActionCore_Execution core;
+    core.version = 1;
+    core.nonce = 1;
+    core.gasLimit = 20000000;
+    strcpy(core.gasPrice, gasPrice);
+    strcpy(core.execution.amount, amount);
+    strcpy(core.execution.contract, contractAddr);
+    core.execution.data = dataStr;
+
+    uint8_t signature[IOTEX_SIGNATURE_SIZE] = {0};
+    account.signExecutionAction(core, signature);
+    printhex(signature, sizeof(signature));
+
+    ASSERT_EQ(0, memcmp(expectedSignature, signature, IOTEX_SIGNATURE_SIZE));
+}
+// --------------------- sendExecution  ------------------------------
+
+TEST_F(AccountTests_Execution, sendExecution_InvalidTransaction_ReturnsGrpcError)
+{
+    Connection<Api> connection(serverHost, serverPort, baseUrl);
+
+    std::string callData = "";
+
+    uint8_t actionHash[IOTEX_HASH_SIZE] = {0};
+    char signatureStr[IOTEX_SIGNATURE_STRLEN] = {0};
+    uint8_t signature[IOTEX_SIGNATURE_SIZE] = {0};
+    ResultCode result = account.sendExecutionAction(connection, 0, 20000000, "1000000000000", "GetInvalidNonce", "", callData, actionHash);
+
+    ASSERT_EQ(ResultCode::ERROR_GRPC, result);
 }
