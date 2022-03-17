@@ -94,4 +94,90 @@ TEST_F(WalletTests, GetExecutionByHash)
     ASSERT_STREQ(execution.timestamp, "2021-06-14T10:14:00Z"); 
 }
 
+TEST_F(WalletTests, ReadContract_Ok)
+{
+    Connection<Api> connection(serverHost, serverPort, baseUrl);
+    Execution execution;
+    memset(execution.amount, 0, sizeof(execution.amount));
+    memset(execution.amount, 0, sizeof(execution.amount));
+    strcpy(execution.contract, vitaTokenAddress);
+    // Create data: balanceOf function selector
+    execution.data = "70a08231000000000000000000000000";
+    // Create data: test address
+    execution.data += testAddressEth;
 
+    ReadContractResponse response;
+    ResultCode result = connection.api.wallets.readContract(execution, testAddressIo, 200000, &response);
+
+    ASSERT_EQ(result, ResultCode::SUCCESS);
+    ASSERT_STREQ(response.data.c_str(), "0000000000000000000000000000000000000000000000000de0b6b3a7640000");
+    ASSERT_STREQ(response.receipt.actHash, "WivWU9oSe6Q6+QFLSFsSjG+Glyhn62Jt8Ewn+hf0N9U=");
+    ASSERT_EQ(response.receipt.status, 1);
+    ASSERT_EQ(response.receipt.blkHeight, 16333441);
+    ASSERT_EQ(response.receipt.gasConsumed, 15334);
+    ASSERT_STREQ(response.receipt.contractAddress, "");
+    ASSERT_EQ(response.receipt.executionRevertMsg, "");
+    ASSERT_EQ(response.receipt.txIndex, 0);
+}
+
+TEST_F(WalletTests, ReadContract_HandlesMissingFields)
+{
+    // Test that missing optional fields in the response are handled correctly
+    Connection<Api> connection(serverHost, serverPort, baseUrl);
+    Execution execution;
+    memset(execution.amount, 0, sizeof(execution.amount));
+    strcpy(execution.contract, vitaTokenAddress);
+    // Set the amount to the special value so we can map it to the response from the fake server.
+    // See /tools/server-fake/config.json.
+    strcpy(execution.amount, "MissingOptionalFields");
+    execution.data = "";
+    
+    ReadContractResponse response;
+    ResultCode result = connection.api.wallets.readContract(execution, testAddressIo, 200000, &response);
+
+    ASSERT_EQ(result, ResultCode::SUCCESS);
+    ASSERT_STREQ(response.data.c_str(), "");
+    ASSERT_STREQ(response.receipt.actHash, "");
+    ASSERT_EQ(response.receipt.status, 1);
+    ASSERT_EQ(response.receipt.blkHeight, 1);
+    ASSERT_EQ(response.receipt.gasConsumed, 1);
+    ASSERT_STREQ(response.receipt.contractAddress, "");
+    ASSERT_EQ(response.receipt.executionRevertMsg, "");
+    ASSERT_EQ(response.receipt.txIndex, 0);
+}
+
+TEST_F(WalletTests, ReadContract_Handles400Error)
+{
+    // Test that missing optional fields in the response are handled correctly
+    Connection<Api> connection(serverHost, serverPort, baseUrl);
+    Execution execution;
+    memset(execution.amount, 0, sizeof(execution.amount));
+    strcpy(execution.contract, vitaTokenAddress);
+    // Set the amount to the special value so we can map it to the response from the fake server.
+    // See /tools/server-fake/config.json.
+    strcpy(execution.amount, "Get400Error");
+    execution.data = "";
+    
+    ReadContractResponse response;
+    ResultCode result = connection.api.wallets.readContract(execution, testAddressIo, 200000, &response);
+
+    ASSERT_EQ(result, ResultCode::ERROR_HTTP);
+}
+
+TEST_F(WalletTests, ReadContract_Handles500Error)
+{
+    // Test that missing optional fields in the response are handled correctly
+    Connection<Api> connection(serverHost, serverPort, baseUrl);
+    Execution execution;
+    memset(execution.amount, 0, sizeof(execution.amount));
+    strcpy(execution.contract, vitaTokenAddress);
+    // Set the amount to the special value so we can map it to the response from the fake server.
+    // See /tools/server-fake/config.json.
+    strcpy(execution.amount, "Get500Error");
+    execution.data = "";
+    
+    ReadContractResponse response;
+    ResultCode result = connection.api.wallets.readContract(execution, testAddressIo, 200000, &response);
+
+    ASSERT_EQ(result, ResultCode::ERROR_HTTP);
+}
