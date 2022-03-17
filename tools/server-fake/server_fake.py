@@ -18,11 +18,12 @@ LISTEN_PORT = config["port"]
 class GrpcStatus(Enum):
     success = 0,
     failed_convert_contract_address = 13
+    failed_known_transaction = 13
 
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def set_grpc_headers(self, status: GrpcStatus, message: String):
         self.send_header("grpc-status", status.value)
-        self.send_header("grpc-message", "")
+        self.send_header("grpc-message", message)
         return
 
     def get_endpoint_config(self, path: String, body: dict):

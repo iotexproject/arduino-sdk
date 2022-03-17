@@ -11,10 +11,7 @@ class SignerTests : public Test
 {
     public: 
         void SetUp() override {}
-
         void TearDown() override {}
-
-        char addressStr[ETH_ADDRESS_STRLEN+1];
 };
 
 // --------------------- str2hex ------------------------------
