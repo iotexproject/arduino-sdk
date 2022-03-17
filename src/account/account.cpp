@@ -21,7 +21,7 @@ Account::Account()
 	GenerateAddressesFromPrivateKey();
 }
 
-Account::Account(uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
+Account::Account(const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
 {
 	setDepsFromGlobals();
 	// Copy the private key
@@ -30,7 +30,7 @@ Account::Account(uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
 }
 
 Account::Account(Random* pRandomGenerator, Encoder* pEncoder, Signer* pSigner,
-				 uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
+				 const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
 {
 	_pRandomGenerator = pRandomGenerator;
 	_pSigner = pSigner;

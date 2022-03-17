@@ -26,7 +26,7 @@ class Account
 	 *
 	 * @param privateKey The private key
 	 */
-	Account(uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE]);
+	Account(const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE]);
 
 	/**************************************************************************/
 	/* Getters */
@@ -217,7 +217,7 @@ class Account
   public:
 	// Allow to inject mock dependencies in constructor
 	Account(Random* pRandomGenerator, Encoder* pEncoder, Signer* pSigner,
-			uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE] = nullptr);
+			const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE] = nullptr);
 };
 } // namespace iotex
 

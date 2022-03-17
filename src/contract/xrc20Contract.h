@@ -28,7 +28,7 @@ class Xrc20Contract
 	 * @param address The ethereum address
 	 * @param[out] data The buffere where the data is stored
 	 */
-	static void generateCallDataForBalanceOf(uint8_t address[ETH_ADDRESS_SIZE],
+	static void generateCallDataForBalanceOf(const uint8_t address[ETH_ADDRESS_SIZE],
 											 uint8_t data[IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE]);
 
 	/**
@@ -39,7 +39,7 @@ class Xrc20Contract
 	 * @param value The amount to transfer
 	 * @param data
 	 */
-	static void generateCallDataForTransfer(uint8_t to[ETH_ADDRESS_SIZE], uint64_t value,
+	static void generateCallDataForTransfer(const uint8_t to[ETH_ADDRESS_SIZE], uint64_t value,
 											uint8_t data[IOTEX_CONTRACT_ENCODED_TRANSFER_SIZE]);
 };
 } // namespace iotex
