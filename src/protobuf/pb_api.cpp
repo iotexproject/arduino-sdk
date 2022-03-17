@@ -669,3 +669,111 @@ ResultCode SendExecutionResponse::fromJson(IotexString jsonString)
 
 	return ret;
 }
+
+ResultCode ReadContractResponse::fromJson(IotexString jsonString)
+{
+	ResultCode ret = ResultCode::SUCCESS;
+	cJSON* data = cJSON_Parse(jsonString.c_str());
+	if(data == NULL)
+	{
+		cJSON_Delete(data);
+		return ResultCode::ERROR_JSON_PARSE;
+	}
+
+	const cJSON* rspData = cJSON_GetObjectItemCaseSensitive(data, "data");
+	ret = SetValueFromJsonObject(rspData, CppType::STRING, (void*)&(this->data));
+	if(ret != ResultCode::SUCCESS)
+	{
+		cJSON_Delete(data);
+		return ret;
+	}
+
+	// Receipt
+	const cJSON* receipt = cJSON_GetObjectItemCaseSensitive(data, "receipt");
+	// The server serializes the values as string even if they are integers
+	// cJSON fails if trying to parse a stringified int as an int
+	// So we use a tmp string to convert them
+	IotexString tmp;
+
+	// Status
+	const cJSON* status = cJSON_GetObjectItemCaseSensitive(receipt, "status");
+	ret = SetValueFromJsonObject(status, CppType::STRING, &tmp);
+	if(ret != ResultCode::SUCCESS)
+	{
+		cJSON_Delete(data);
+		return ret;
+	}
+	this->receipt.status = atol(tmp.c_str());
+
+	// blkHeight
+	const cJSON* blkHeight = cJSON_GetObjectItemCaseSensitive(receipt, "blkHeight");
+	ret = SetValueFromJsonObject(blkHeight, CppType::STRING, &tmp);
+	if(ret != ResultCode::SUCCESS)
+	{
+		cJSON_Delete(data);
+		return ret;
+	}
+	this->receipt.blkHeight = atol(tmp.c_str());
+
+	// actHash
+	const cJSON* hash = cJSON_GetObjectItemCaseSensitive(receipt, "actHash");
+	memset(this->receipt.actHash, 0, sizeof(this->receipt.actHash));
+	ret = SetValueFromJsonObject(hash, CppType::C_STRING, (void*)&(this->receipt.actHash), IOTEX_HASH_STRLEN);
+	if(ret != ResultCode::SUCCESS)
+	{
+		cJSON_Delete(data);
+		return ret;
+	}
+
+	// gasConsumed
+	const cJSON* gasConsumed = cJSON_GetObjectItemCaseSensitive(receipt, "gasConsumed");
+	ret = SetValueFromJsonObject(gasConsumed, CppType::STRING, &tmp);
+	if(ret != ResultCode::SUCCESS)
+	{
+		cJSON_Delete(data);
+		return ret;
+	}
+	this->receipt.gasConsumed = atol(tmp.c_str());
+	
+	// Following fields are optional
+	// contractAddress
+	const cJSON* contractAddress = cJSON_GetObjectItemCaseSensitive(receipt, "contractAddress");
+	if (contractAddress)
+	{
+		memset(this->receipt.contractAddress, 0, sizeof(this->receipt.contractAddress));
+		ret = SetValueFromJsonObject(contractAddress, CppType::C_STRING, (void*)&(this->receipt.contractAddress), IOTEX_ADDRESS_STRLEN);
+		if(ret != ResultCode::SUCCESS)
+		{
+			cJSON_Delete(data);
+			return ret;
+		}
+	}
+
+	// executionRevertMsg
+	const cJSON* executionRevertMsg = cJSON_GetObjectItemCaseSensitive(receipt, "executionRevertMsg");
+	if (executionRevertMsg)
+	{
+		ret = SetValueFromJsonObject(executionRevertMsg, CppType::STRING, (void*)&(this->receipt.executionRevertMsg));
+		if(ret != ResultCode::SUCCESS)
+		{
+			cJSON_Delete(data);
+			return ret;
+		}
+	}
+
+	// gasConsumed
+	const cJSON* txIndex = cJSON_GetObjectItemCaseSensitive(receipt, "txIndex");
+	if (txIndex)
+	{
+		ret = SetValueFromJsonObject(txIndex, CppType::UINT32, (void*)&(this->receipt.txIndex));
+		if(ret != ResultCode::SUCCESS)
+		{
+			cJSON_Delete(data);
+			return ret;
+		}
+	}
+
+	cJSON_Delete(data);
+	
+	return ret;
+}

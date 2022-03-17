@@ -135,3 +135,26 @@ ResultCode Wallets::sendExecution(const uint8_t senderPubKey[IOTEX_PUBLIC_KEY_SI
 
 	return ret;
 }
+
+ResultCode Wallets::readContract(const responsetypes::Execution& execution,
+						const IotexString callerAddress,
+						uint64_t gasLimit,
+						ReadContractResponse* response)
+{
+	ResultCode ret;
+	rpc::RpcCallData callData =
+		rpc::Wallets::readContract(this->host_, execution, gasLimit, callerAddress);
+	IotexString rspBody;
+
+	IOTEX_DEBUG(logModule, "Sending readContract request with body: %s", callData.body.c_str());
+
+	ret = http_->post(callData.url.c_str(), callData.body.c_str(), rspBody);
+	if(ret != ResultCode::SUCCESS)
+		return ret;
+
+	ret = response->fromJson(rspBody);
+	if(ret != ResultCode::SUCCESS)
+		return ret;
+		
+	return ret;
+}
