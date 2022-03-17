@@ -174,6 +174,31 @@ struct SendExecutionResponse
 	char hash[IOTEX_HASH_C_STRING_SIZE];
 };
 
+struct Receipt
+{
+  public:
+	ResultCode fromJson(IotexString jsonString);
+
+  public:
+	uint64_t status;
+	uint64_t blkHeight;
+	char actHash[IOTEX_HASH_C_STRING_SIZE];
+	uint64_t gasConsumed;
+	char contractAddress[IOTEX_ADDRESS_C_STRING_SIZE];
+	IotexString executionRevertMsg;
+	uint32_t txIndex;
+};
+
+struct ReadContractResponse
+{
+  public:
+	ResultCode fromJson(IotexString jsonString);
+
+  public:
+	IotexString data;
+	Receipt receipt;
+};
+
 // JSON Objects - unused
 
 struct AccountMetaJsonObject

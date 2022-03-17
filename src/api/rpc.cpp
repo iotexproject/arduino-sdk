@@ -166,3 +166,41 @@ RpcCallData Wallets::sendExecution(Host& host, const responsetypes::ActionCore_E
 	ret.body = body;
 	return ret;
 }
+
+RpcCallData Wallets::readContract(Host& host,
+									 const responsetypes::Execution execution,
+									 uint64_t gasLimit,
+									 const IotexString callerAddress)
+{
+	RpcCallData ret;
+
+	uint8_t data[execution.data.length() / 2];
+	memset(data, 0, sizeof(data));
+	char base64Data[sizeof(data) * 2]; // Double the size is enough for a base64 encoded message
+	signer.str2hex(execution.data.c_str(), data, sizeof(data));
+	encoder.base64_encode(data, sizeof(data), base64Data);
+	
+	// Url
+	ret.url.reserve(URL_MAX_LEN);
+	ret.url += host.toString().c_str();
+	ret.url += "ReadContract";
+
+	// Body
+	char body[1024 + sizeof(base64Data)] = {0};
+	sprintf(body + strlen(body), R"({"execution": {"amount": ")");
+	sprintf(body + strlen(body), "%s", execution.amount);
+	sprintf(body + strlen(body), R"(")");
+	sprintf(body + strlen(body), R"(,"contract": ")");
+	sprintf(body + strlen(body), "%s", execution.contract);
+	sprintf(body + strlen(body), R"(","data": ")");
+	sprintf(body + strlen(body), "%s", base64Data);
+	sprintf(body + strlen(body), R"("})");
+	sprintf(body + strlen(body), R"(,"callerAddress": ")");
+	sprintf(body + strlen(body), "%s", callerAddress.c_str());
+	sprintf(body + strlen(body), R"(","gasLimit":")");
+	sprintf(body + strlen(body), "%lu", gasLimit);
+	sprintf(body + strlen(body), R"("})");
+
+	ret.body = body;
+	return ret;
+}

@@ -93,6 +93,19 @@ class IWallets : public Base
 									 const responsetypes::ActionCore_Execution& transfer,
 									 uint8_t hash[IOTEX_HASH_SIZE]) = 0;
 
+	/**
+	 * @brief Reads a contract
+	 *
+	 * @param execution  The execution data
+	 * @param callerAddress  The caller address
+	 * @param gasLimit  The gas limit
+	 * @param[out] response The abi encoded response if successful
+	 * @return ResultCode Success or an error code
+	 */
+	virtual ResultCode readContract(const responsetypes::Execution& execution,
+									const IotexString callerAddress, uint64_t gasLimit,
+									responsetypes::ReadContractResponse* response) = 0;
+
   protected:
 	IWallets(Host& host, IHTTP& http) : Base(host, http)
 	{
@@ -130,6 +143,10 @@ class Wallets : public IWallets
 									 const uint8_t signature[IOTEX_SIGNATURE_SIZE],
 									 const responsetypes::ActionCore_Execution& transfer,
 									 uint8_t hash[IOTEX_HASH_SIZE]) override;
+
+	virtual ResultCode readContract(const responsetypes::Execution& execution,
+									const IotexString callerAddress, uint64_t gasLimit,
+									responsetypes::ReadContractResponse* response) override;
 }; // class Wallets : public IWallets
 
 } // namespace api

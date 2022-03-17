@@ -39,6 +39,8 @@ class Wallets
 									 const responsetypes::ActionCore_Execution execution,
 									 const uint8_t senderPubKey[IOTEX_PUBLIC_KEY_SIZE],
 									 const uint8_t signature[IOTEX_SIGNATURE_SIZE]);
+	static RpcCallData readContract(Host& host, const responsetypes::Execution execution,
+									uint64_t gasLimit, const IotexString callerAddress);
 };
 
 } // namespace rpc
