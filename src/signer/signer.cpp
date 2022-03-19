@@ -125,12 +125,12 @@ static uint8_t value(uint8_t c, uint32_t* ret)
 		return c - '0';
 	}
 
-	if(c >= 'a' && c <= 'z')
+	if(c >= 'a' && c <= 'f')
 	{
 		return c - 'a' + 10;
 	}
 
-	if(c >= 'A' && c <= 'Z')
+	if(c >= 'A' && c <= 'F')
 	{
 		return c - 'A' + 10;
 	}
