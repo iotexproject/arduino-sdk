@@ -77,3 +77,19 @@ void iotex::Helpers::setModuleLogLevel(const std::string& module, IotexLogLevel 
 {
 	logger.set_module_level(module, (cpplogger::LogLevel)(int)level);
 }
+
+void iotex::Helpers::endianSwap(uint8_t* pData, uint64_t size)
+{
+	if(size < 2)
+		return;
+
+	uint8_t tmp;
+	uint8_t* lastByte = pData + size - 1;
+
+	for(int i = 0; i < size / 2; i++)
+	{
+		tmp = *(lastByte - i);
+		*(lastByte - i) = *(pData + i);
+		*(pData + i) = tmp;
+	}
+}

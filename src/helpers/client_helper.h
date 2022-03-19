@@ -209,6 +209,14 @@ class Helpers
 	 * @param level
 	 */
 	void setModuleLogLevel(const std::string& module, IotexLogLevel level);
+
+	/**
+	 * @brief Swaps the endianness of a byte array
+	 *
+	 * @param pData	A pointer to the data
+	 * @param size	The size of the data in bytes
+	 */
+	void endianSwap(uint8_t* pData, uint64_t size);
 };
 } // namespace iotex
 
