@@ -62,6 +62,7 @@ add_library(iotex-client STATIC
         src/storage/os/storage.cpp
         src/account/account.cpp
         src/abi/abi.cpp
+        src/abi/abiDecode.cpp
         src/helpers/json_helper.cpp
         src/helpers/client_helper.cpp
         src/contract/contract.cpp
