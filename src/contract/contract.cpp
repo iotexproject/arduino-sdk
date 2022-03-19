@@ -1,5 +1,6 @@
 #include "contract/contract.h"
 #include "signer/signer.h"
+#include "helpers/client_helper.h"
 #include <cmath>
 #include <vector>
 
@@ -8,22 +9,6 @@ using namespace std;
 using namespace iotex::abi;
 
 static const auto& logModule = logModuleNamesLookupTable[LogModules::CONTRACT];
-
-static void EndianSwap(uint8_t* pData, uint64_t size)
-{
-	if(size < 2)
-		return;
-
-	uint8_t tmp;
-	uint8_t* lastByte = pData + size - 1;
-
-	for(int i = 0; i < size / 2; i++)
-	{
-		tmp = *(lastByte - i);
-		*(lastByte - i) = *(pData + i);
-		*(pData + i) = tmp;
-	}
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // CONSTRUCTION
@@ -297,7 +282,7 @@ int32_t iotex::Contract::generateBytesForAddress(const uint8_t* pVal, uint8_t* o
 	IOTEX_TRACE_F(logModule, "generateBytesForAddress");
 	uint8_t address[20];
 	memcpy(address, pVal, 20);
-	EndianSwap(address, 20);
+	IotexHelpers.endianSwap(address, 20);
 	int32_t ret = generateBytesForUint(address, 20, out);
 	IOTEX_DEBUG_BUF(logModule, out, ret);
 	return ret;
