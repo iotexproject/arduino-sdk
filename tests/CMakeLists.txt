@@ -40,6 +40,8 @@ endif()
 set (IOTEX_UNIT_TESTS_SOURCES 
     src/api/wallets/walletsTests.cpp
     src/abi/abiTests.cpp
+    src/abi/decode/abiDecodeUintTests.cpp
+    src/abi/decode/abiDecodeIntTests.cpp
     src/contract/contractTests.cpp
     src/contract/xrc20ContractTests.cpp
     src/account/accountTests_Execution.cpp
