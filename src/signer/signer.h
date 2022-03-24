@@ -79,9 +79,10 @@ class Signer
 	 * @param str The hex string. Must be null terminated
 	 * @param[out] hex A pointer to a buffer where to store the bytes
 	 * @param size The size of the buffer
+	 * @param strLength[opt] The string length, needs to be passed if str is not null terminated
 	 * @return ResultCode Success or an error code
 	 */
-	ResultCode str2hex(const char* str, uint8_t* hex, size_t size);
+	ResultCode str2hex(const char* str, uint8_t* hex, size_t size, size_t strLength = 0);
 };
 } // namespace iotex
 
