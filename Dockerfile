@@ -58,7 +58,7 @@ WORKDIR /workdir/project/tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nodejs && \
     apt-get -y update && \
     apt-get -y install npm && \
-    npm install abi-decoder web3
+    npm install -g abi-decoder web3
 
 WORKDIR /workdir/project
 ENV LC_ALL=C.UTF-8
