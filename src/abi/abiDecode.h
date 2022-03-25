@@ -1,6 +1,7 @@
 #ifndef IOTEX_ABI_DECODE_H
 #define IOTEX_ABI_DECODE_H
 
+#include "helpers/client_helper.h"
 #include "IoTeXConstants.h"
 #include "IoTeXResultCodes.h"
 
@@ -88,6 +89,8 @@ bool decodeBool(const char data[64]);
 
 iotex::ResultCode decodeUintGeneric(const char* pData, size_t uintSize, uint64_t* out);
 iotex::ResultCode decodeIntGeneric(const char* pData, size_t uintSize, int64_t* out);
+iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out);
+
 template<uint8_t size>
 ResultCode decodeUint(const char* pData, size_t dataSize, uint64_t* out)
 {
