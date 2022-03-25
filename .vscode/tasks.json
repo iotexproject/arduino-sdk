@@ -3,8 +3,8 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "Arduino: Build unit tests",
-            "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ../ && make",
+            "label": "IoTeX SDK: Build unit tests",
+            "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ../ && make -j 6 ",
             "options": {
                 "cwd": "${workspaceRoot}/"
             },
