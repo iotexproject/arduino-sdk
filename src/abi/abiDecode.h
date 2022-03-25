@@ -91,6 +91,7 @@ iotex::ResultCode decodeUintGeneric(const char* pData, size_t uintSize, uint64_t
 iotex::ResultCode decodeIntGeneric(const char* pData, size_t uintSize, int64_t* out);
 iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out);
 iotex::ResultCode decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE]);
+bool decodeBool(const char data[64]);
 
 template<uint8_t size>
 ResultCode decodeUint(const char* pData, size_t dataSize, uint64_t* out)

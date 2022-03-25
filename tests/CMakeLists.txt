@@ -44,6 +44,7 @@ set (IOTEX_UNIT_TESTS_SOURCES
     src/abi/decode/abiDecodeIntTests.cpp
     src/abi/decode/abiDecodeStringTests.cpp
     src/abi/decode/abiDecodeAddressTests.cpp
+    src/abi/decode/abiDecodeBoolTests.cpp
     src/contract/contractTests.cpp
     src/contract/xrc20ContractTests.cpp
     src/account/accountTests_Execution.cpp

@@ -132,3 +132,9 @@ iotex::ResultCode iotex::abi::decode::decodeAddress(const char data[64], char ou
 
 	return ResultCode::SUCCESS;
 }
+
+bool iotex::abi::decode::decodeBool(const char data[64])
+{
+	// Bool is encoded as uint8. With the value of 1 for true and the value of 0 for false.
+	return data[63] == '1';
+}
