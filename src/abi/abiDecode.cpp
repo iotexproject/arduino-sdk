@@ -121,3 +121,14 @@ ResultCode iotex::abi::decode::decodeString(const char* pData, size_t size, Iote
 	
 	return ResultCode::SUCCESS;
 }
+
+iotex::ResultCode iotex::abi::decode::decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE])
+{
+	// The address is encoded as a uint160
+	// Ie. big-endian encoding padded on the higher-order (left) side with zero-bytes such that the length is 32 bytes.
+	out[ETH_ADDRESS_C_STRING_SIZE-1] = 0;
+	const char* pStart = data + 24;	// 12 padding bytes
+	memcpy(out, pStart, ETH_ADDRESS_C_STRING_SIZE - 1);
+
+	return ResultCode::SUCCESS;
+}
