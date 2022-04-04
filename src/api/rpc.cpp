@@ -186,7 +186,8 @@ RpcCallData Wallets::readContract(Host& host,
 	ret.url += "ReadContract";
 
 	// Body
-	char body[1024 + sizeof(base64Data)] = {0};
+	char body[1024 + sizeof(base64Data)];
+	memset(body, 0, sizeof(body));
 	sprintf(body + strlen(body), R"({"execution": {"amount": ")");
 	sprintf(body + strlen(body), "%s", execution.amount);
 	sprintf(body + strlen(body), R"(")");
