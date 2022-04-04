@@ -138,3 +138,54 @@ bool iotex::abi::decode::decodeBool(const char data[64])
 	// Bool is encoded as uint8. With the value of 1 for true and the value of 0 for false.
 	return data[63] == '1';
 }
+
+iotex::ResultCode iotex::abi::decode::decodeStaticBytes(const char* pData, size_t bytesSize, uint8_t out[])
+{
+	// Bytes are left aliged and padded to the right with 0.
+	ResultCode res = signer.str2hex(pData, out, bytesSize, bytesSize*2);
+	return res;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool includesHeader)
+{
+	// Cheack size is enough to contain at least the header/size.
+	if (strlen(pData) < wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+	
+	const char* pBytesSize = pData;
+	if (includesHeader)
+	{
+		// Cheack size is enough to contain at least the header + offset
+		if (strlen(pData) < wordStrLen * 2) { return ResultCode::ERROR_BAD_PARAMETER; }
+
+		uint64_t offset = decodeUint64(pData);
+		pBytesSize += (offset*2);
+	}
+	size_t bytesCount = getDynamicArraySize(pBytesSize);
+
+	// Validate the size is enought to contain all the bytes.
+	size_t minimumSize = wordStrLen;	// 1st word - Number of bytes
+	minimumSize += (bytesCount / 32) * wordStrLen;		// Full words
+	minimumSize += (bytesCount % 32) * 2;
+	if (strlen(pBytesSize) < minimumSize) { return ResultCode::SUCCESS; }
+
+	// Move the pointer to the data.
+	const char* pByte = pBytesSize + wordStrLen;
+
+	out.reserve(bytesCount);
+	for (size_t i=0; i<bytesCount; i++)
+	{
+		uint8_t byte;
+		ResultCode res = signer.str2hex(pByte, &byte, 1, 2);
+		if (res != ResultCode::SUCCESS) { return res; }
+		out.push_back(byte);
+		// Move the pointer to the next byte.
+		pByte += 2;
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+size_t iotex::abi::decode::getDynamicArraySize(const char* pData)
+{
+	return decodeUint64(pData);
+}
