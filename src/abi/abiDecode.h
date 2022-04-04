@@ -86,6 +86,26 @@ iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out)
 iotex::ResultCode decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE]);
 bool decodeBool(const char data[64]);
 
+/**
+ * @brief Decodes an ABI encoded static bytes value.
+ *
+ * @param pData The ABI encoded data.
+ * @param pData The nuber of bytes encoded.
+ * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold at least bytesSize bytes.
+ */
+iotex::ResultCode decodeStaticBytes(const char* pData, size_t bytesSize, uint8_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static bytes value.
+ *
+ * @param pData The ABI encoded data.
+ * @param pData The nuber of bytes encoded.
+ * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold at least bytesSize bytes.
+ */
+iotex::ResultCode decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool includesHeader = true);
+
+
+size_t getDynamicArraySize(const char* pData);
 
 iotex::ResultCode decodeUintGeneric(const char* pData, size_t uintSize, uint64_t* out);
 iotex::ResultCode decodeIntGeneric(const char* pData, size_t uintSize, int64_t* out);
