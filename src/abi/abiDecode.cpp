@@ -94,29 +94,28 @@ ResultCode iotex::abi::decode::decodeIntGeneric(const char* pData, size_t uintSi
     return ResultCode::SUCCESS;
 }
 
-ResultCode iotex::abi::decode::decodeString(const char* pData, size_t size, IotexString& out)
+ResultCode iotex::abi::decode::decodeString(const char* pData, size_t size, IotexString& out, bool containsOffset)
 {
 	// A string has n 32 byte words where n>=3.
 	// Word 1: header (offset to the data area)
 	// Word 2: size of the string, encoded as uint
 	// Words 3-n: the string contents.
-	const uint wordSize = 64;
-	if (size < 3*wordSize) { return ResultCode::ERROR_BAD_PARAMETER; }
+	uint32_t minWords = 2 + containsOffset;
+	if (strlen(pData) < minWords*wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
 
 	// Parse the string size to get the string size.
 	// We only parse the last 8 bytpDataes from the size word. The size will never overflow a 64b uint.
-	const char* pStringLenStart = pData + (wordSize*2) - 16;
-	uint64_t stringLength = 0;
-	ResultCode res = decodeUintGeneric(pStringLenStart, 8, &stringLength);
-	if (res != ResultCode::SUCCESS) { return res; }
+ 	if (containsOffset) { pData += wordStrLen; }
+	uint64_t stringLength = decodeUint64(pData);
+	pData += wordStrLen;
 	// Check the size of the passed data is enough to contain the string size
-	if ((size-64) < stringLength) { return ResultCode::ERROR_BAD_PARAMETER; }
+	if (strlen(pData) < stringLength*2) { return ResultCode::ERROR_BAD_PARAMETER; }
 
 	// Create a buffer of string size. Add 1 extra byte for the null terminator.
 	out.reserve(stringLength);
-	const char* pString = pData + wordSize*2;
-	char buf[stringLength+1] = {0};
-	signer.str2hex(pString, (uint8_t*) buf, sizeof(buf), stringLength*2);
+	char buf[stringLength+1];
+	memset(buf, 0, sizeof(buf));
+	signer.str2hex(pData, (uint8_t*) buf, sizeof(buf), stringLength*2);
 	out = buf;
 	
 	return ResultCode::SUCCESS;
