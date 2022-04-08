@@ -92,6 +92,12 @@ int64_t decodeInt64(const char pData[64]);
  */
 iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out, bool containsOffset = true);
 
+/**
+ * @brief Decodes an ABI encoded address.
+ *
+ * @param pData The ABI encoded word (32 bytes).
+ * @param[out] out The decoded value.
+ */
 iotex::ResultCode decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE]);
 bool decodeBool(const char data[64]);
 
