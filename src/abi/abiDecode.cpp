@@ -8,6 +8,7 @@
 using namespace iotex;
 using namespace std;
 using namespace iotex::abi;
+using namespace iotex::bignum;
 
 namespace
 {
@@ -41,6 +42,27 @@ uint64_t iotex::abi::decode::decodeUint64(const char pData[64])
 	uint64_t out = 0;
 	decodeUint<8>(pData, 64, &out);
 	return out;
+}
+
+ResultCode iotex::abi::decode::decodeBigUint(const char* pData, size_t uintSize, iotex::bignum::Bignum& out)
+{
+	if (uintSize == 0 || uintSize % 8 || uintSize > 256)
+	{
+		return ResultCode::ERROR_BAD_PARAMETER;
+	}
+
+	uint8_t bytesSize = uintSize/8;
+	uint8_t paddingBytes = 32 - bytesSize;
+	pData += paddingBytes*2;
+
+	// Copy to a new buffer so we can zero terminate it and pass the string to the bignum constructor.
+	char zeroTerminated[bytesSize*2 + 1];
+	zeroTerminated[bytesSize*2] = '\0';
+	memcpy(zeroTerminated, pData, bytesSize*2);
+
+	out = Bignum(zeroTerminated, NumericBase::Base16);
+
+	return ResultCode::SUCCESS;
 }
 
 int8_t iotex::abi::decode::decodeInt8(const char pData[64])
