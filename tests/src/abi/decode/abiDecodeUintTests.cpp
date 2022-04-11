@@ -4,11 +4,13 @@
 #include "abi/abiDecode.h"
 #include "contract/contract.h"
 #include "signer/signer.h"
+#include "bignum/bignum.h"
 
 using namespace std;
 using namespace testing;
 using namespace iotex;
 using namespace iotex::abi::decode;
+using namespace iotex::bignum;
 
 class AbiDecodeUintTests : public Test
 {
@@ -109,4 +111,24 @@ TEST_F(AbiDecodeUintTests, Handles0xPrefix)
     ResultCode result = decodeUint<1>(encoded, strlen(encoded), &decoded);
     ASSERT_EQ(ResultCode::SUCCESS, result);
     ASSERT_EQ(29, decoded);
+}
+
+TEST_F(AbiDecodeUintTests, Bignum_Ok)
+{
+    const char expectedDecimal[] = "446371678961165142885801714189622662489706559239886995455";
+    char encoded[] = "0000000000000000123456789acbdeffffffffffffffffffffffffffffffffff";
+    
+    Bignum decoded;
+
+    // Decode as uint64
+    ResultCode result = decodeBigUint(encoded, 256, decoded);
+    ASSERT_EQ(ResultCode::SUCCESS, result);
+    auto decodedStr = decoded.ToString(NumericBase::Base10).c_str();
+    ASSERT_STREQ(expectedDecimal, decodedStr);
+
+    // Decode as 24 bytes. This tests it handles the padding bytes correctly.
+    result = decodeBigUint(encoded, 192, decoded);
+    ASSERT_EQ(ResultCode::SUCCESS, result);
+    decodedStr = decoded.ToString(NumericBase::Base10).c_str();
+    ASSERT_STREQ(expectedDecimal, decodedStr);
 }

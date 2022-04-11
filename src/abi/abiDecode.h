@@ -1,6 +1,7 @@
 #ifndef IOTEX_ABI_DECODE_H
 #define IOTEX_ABI_DECODE_H
 
+#include "bignum/bignum.h"
 #include "helpers/client_helper.h"
 #include "IoTeXConstants.h"
 #include "IoTeXResultCodes.h"
@@ -54,6 +55,15 @@ uint32_t decodeUint32(const char pData[64]);
  * @param pData The ABI encoded word (32 bytes).
  */
 uint64_t decodeUint64(const char pData[64]);
+
+/**
+ * @brief Decodes an ABI encoded big unsigned integer (up to 256 bit).
+ *
+ * @param pData The ABI encoded data.
+ * @param uintSize The size of the integer in bits.
+ * @param[out] out The decoded integer.
+ */
+iotex::ResultCode decodeBigUint(const char* pData, size_t uintSize, iotex::bignum::Bignum& out);
 
 /**
  * @brief Decodes an ABI encoded 8 bit signed integer.

@@ -44,6 +44,9 @@ add_library(iotex-client STATIC
         src/extern/crypto/ed25519-donna/ed25519.c
         # CppLogger
         src/extern/cpplogger/cpplogger.cpp
+        # Bignum
+        src/extern/uint256_t/uint256_t.cpp
+        src/extern/uint256_t/uint128_t/uint128_t.cpp
    
     # Protobuf
         src/protobuf_files/c_files/action.pb.c
@@ -65,6 +68,7 @@ add_library(iotex-client STATIC
         src/abi/abiDecode.cpp
         src/helpers/json_helper.cpp
         src/helpers/client_helper.cpp
+        src/bignum/bignum.cpp
         src/contract/contract.cpp
         src/contract/xrc20Contract.cpp
 )
@@ -78,7 +82,8 @@ target_include_directories(iotex-client
     PRIVATE src/protobuf_files/c_files
     PRIVATE src/extern/crypto        # Needed for sources inside crypto
     PRIVATE src/extern/nanopb
-    PUBLIC src/extern  
+    PUBLIC src/extern/uint256_t/uint128_t/ # Needed for sources inside uint256_t
+    PUBLIC src/extern
 )
 
 target_compile_definitions(iotex-client
