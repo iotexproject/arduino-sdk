@@ -178,7 +178,6 @@ TEST_F(AccountTests_Execution, sendExecution_getTotalSupply_producesCorrectSigna
 
     uint8_t signature[IOTEX_SIGNATURE_SIZE] = {0};
     account.signExecutionAction(core, signature);
-    printhex(signature, sizeof(signature));
 
     ASSERT_EQ(0, memcmp(expectedSignature, signature, IOTEX_SIGNATURE_SIZE));
 }
