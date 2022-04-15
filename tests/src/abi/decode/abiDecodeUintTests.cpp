@@ -115,20 +115,20 @@ TEST_F(AbiDecodeUintTests, Handles0xPrefix)
 
 TEST_F(AbiDecodeUintTests, Bignum_Ok)
 {
-    const char expectedDecimal[] = "446371678961165142885801714189622662489706559239886995455";
+    const std::string expectedDecimal = "446371678961165142885801714189622662489706559239886995455";
     char encoded[] = "0000000000000000123456789acbdeffffffffffffffffffffffffffffffffff";
     
     Bignum decoded;
 
-    // Decode as uint64
+    // Decode as 32 bytes
     ResultCode result = decodeBigUint(encoded, 256, decoded);
     ASSERT_EQ(ResultCode::SUCCESS, result);
-    auto decodedStr = decoded.ToString(NumericBase::Base10).c_str();
-    ASSERT_STREQ(expectedDecimal, decodedStr);
+    std::string decodedStr = decoded.ToString(NumericBase::Base10).c_str();
+    ASSERT_EQ(expectedDecimal, decodedStr);
 
     // Decode as 24 bytes. This tests it handles the padding bytes correctly.
     result = decodeBigUint(encoded, 192, decoded);
     ASSERT_EQ(ResultCode::SUCCESS, result);
     decodedStr = decoded.ToString(NumericBase::Base10).c_str();
-    ASSERT_STREQ(expectedDecimal, decodedStr);
+    ASSERT_EQ(expectedDecimal, decodedStr);
 }

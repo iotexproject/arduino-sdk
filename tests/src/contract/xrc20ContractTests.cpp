@@ -35,7 +35,7 @@ TEST_F(Xrc20ContractTests, generateCallDataForTotalSupply)
 TEST_F(Xrc20ContractTests, generateCallDataForBalanceOf)
 {
     char expected[] = "70a0823100000000000000000000000019e7e376e7c213b7e7e7e46cc70a5dd086daff2a";
-    uint8_t data[IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE] = {0};
+    uint8_t data[IOTEX_CONTRACT_ENCODED_BALANCEOF_SIZE] = {0};
     char dataStr[sizeof(expected)] = {0};
     Xrc20Contract::generateCallDataForBalanceOf(testAddressEthBytes, data);
     signer.hex2str(data, sizeof(data), dataStr, sizeof(dataStr));
