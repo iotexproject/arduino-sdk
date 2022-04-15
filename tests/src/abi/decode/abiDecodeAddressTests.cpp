@@ -23,5 +23,5 @@ TEST_F(AbiDecodeAddressTests, DecodesCorrectly)
     char decoded[ETH_ADDRESS_C_STRING_SIZE];
     ResultCode res = decodeAddress(encoded, decoded);
     ASSERT_EQ(ResultCode::SUCCESS, res);
-    ASSERT_STREQ("19e7e376e7c213b7e7e7e46cc70a5dd086daff2a", decoded);
+    ASSERT_STREQ("0x19e7e376e7c213b7e7e7e46cc70a5dd086daff2a", decoded);
 }
