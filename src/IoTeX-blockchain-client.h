@@ -11,10 +11,13 @@
 #include "IoTeXResultCodes.h"
 #include "random/random.h"
 #include "storage/storage.h"
+#include "abi/abiDecode.h"
 
 using namespace iotex;
 using namespace iotex::api;
 using namespace iotex::abi;
+using namespace iotex::abi::decode;
 using namespace iotex::responsetypes;
+using namespace iotex::bignum;
 
 #endif
