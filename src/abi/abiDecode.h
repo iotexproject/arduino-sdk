@@ -97,10 +97,12 @@ int64_t decodeInt64(const char pData[64]);
  * @brief Decodes an ABI encoded string.
  *
  * @param pData The ABI encoded data.
- * @param pData The size of data in bytes.
+ * @param size The size of data in bytes.
  * @param[out] out The decoded value.
+ * @param containsOffset If the encoded data contains the offset to the string. Defaults to true.
  */
-iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out, bool containsOffset = true);
+iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out,
+							   bool containsOffset = true);
 
 /**
  * @brief Decodes an ABI encoded address.
@@ -109,14 +111,22 @@ iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out,
  * @param[out] out The decoded value.
  */
 iotex::ResultCode decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE]);
+
+/**
+ * @brief Decodes an ABI encoded bool.
+ *
+ * @param pData The ABI encoded word (32 bytes).
+ * @return The decoded value.
+ */
 bool decodeBool(const char data[64]);
 
 /**
  * @brief Decodes an ABI encoded static bytes value.
  *
  * @param pData The ABI encoded data.
- * @param pData The nuber of bytes encoded.
- * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold at least bytesSize bytes.
+ * @param bytesSize The number of bytes encoded.
+ * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold
+ * at least bytesSize bytes.
  */
 iotex::ResultCode decodeStaticBytes(const char* pData, size_t bytesSize, uint8_t out[]);
 
