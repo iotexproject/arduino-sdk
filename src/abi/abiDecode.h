@@ -134,8 +134,13 @@ iotex::ResultCode decodeStaticBytes(const char* pData, size_t bytesSize, uint8_t
  * @brief Decodes an ABI encoded static bytes value.
  *
  * @param pData The ABI encoded data.
- * @param pData The nuber of bytes encoded.
- * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold at least bytesSize bytes.
+ * @param[out] out A pointer to a byte array where to store the decoded value. Must be able to hold
+ * at least bytesSize bytes.
+ * @param containsOffset If the encoded data contains the header (offset). Defaults to true.
+ */
+iotex::ResultCode decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out,
+									 bool containsOffset = true);
+
  */
 iotex::ResultCode decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool includesHeader = true);
 

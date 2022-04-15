@@ -170,13 +170,13 @@ iotex::ResultCode iotex::abi::decode::decodeStaticBytes(const char* pData, size_
 	return res;
 }
 
-iotex::ResultCode iotex::abi::decode::decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool includesHeader)
+iotex::ResultCode iotex::abi::decode::decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool containsOffset)
 {
 	// Cheack size is enough to contain at least the header/size.
 	if (strlen(pData) < wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
 	
 	const char* pBytesSize = pData;
-	if (includesHeader)
+	if (containsOffset)
 	{
 		// Cheack size is enough to contain at least the header + offset
 		if (strlen(pData) < wordStrLen * 2) { return ResultCode::ERROR_BAD_PARAMETER; }
