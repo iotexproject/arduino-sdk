@@ -8,6 +8,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <vector>
 
 namespace
 {
@@ -141,17 +142,154 @@ iotex::ResultCode decodeStaticBytes(const char* pData, size_t bytesSize, uint8_t
 iotex::ResultCode decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out,
 									 bool containsOffset = true);
 
+/**
+ * @brief Decodes an ABI encoded static array of 8 bit unsigned integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
  */
-iotex::ResultCode decodeDynamicBytes(const char* pData, std::vector<uint8_t>& out, bool includesHeader = true);
+iotex::ResultCode decodeStaticArrayUint8(const char* pData, size_t arraySize, uint8_t out[]);
 
+/**
+ * @brief Decodes an ABI encoded static array of 16 bit unsigned integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayUint16(const char* pData, size_t arraySize, uint16_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 32 bit unsigned integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayUint32(const char* pData, size_t arraySize, uint32_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 64 bit unsigned integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayUint64(const char* pData, size_t arraySize, uint64_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 256 bit unsigned integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a Bignum where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayUint256(const char* pData, size_t arraySize, iotex::bignum::Bignum out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of boolean values.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayBool(const char* pData, size_t arraySize, bool out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 8 bit signed integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayInt8(const char* pData, size_t arraySize, int8_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 16 bit signed integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayInt16(const char* pData, size_t arraySize, int16_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 32 bit signed integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayInt32(const char* pData, size_t arraySize, int32_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of 64 bit signed integers.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to a byte array where to store the decoded values. Must be able to hold
+ * at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayInt64(const char* pData, size_t arraySize, int64_t out[]);
+
+/**
+ * @brief Decodes an ABI encoded static array of addresses.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to an array of c style strings where to store the decoded
+ * values. Must be able to hold at least arraySize elements.
+ */
+iotex::ResultCode decodeStaticArrayAddress(const char* pData, size_t arraySize,
+										   char out[][ETH_ADDRESS_C_STRING_SIZE]);
+
+/**
+ * @brief Decodes an ABI encoded static array of static bytes.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param bytesSize The nuber of bytes in each element of the array.
+ * @param[out] out A vector of bytes where to store the decoded values.
+ */
+iotex::ResultCode decodeStaticArrayStaticBytes(const char* pData, size_t arraySize, size_t
+bytesSize, std::vector<std::vector<uint8_t>>& out);
+
+/**
+ * @brief Decodes an ABI encoded static array of static bytes.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A vector of bytes  where to store the decoded values.
+ * @param containsArrayOffset Whether the encoded data contains the header (offset).
+ */
+iotex::ResultCode decodeStaticArrayDynamicBytes(const char* pData, size_t arraySize,
+std::vector<std::vector<uint8_t>>& out, bool containsArrayOffset = true);
+
+/**
+ * @brief Decodes an ABI encoded static array of strings.
+ *
+ * @param pData The ABI encoded data.
+ * @param arraySize The nuber of elements in the array.
+ * @param[out] out A pointer to an array of strings where to store the decoded values.
+ * @param containsArrayOffset Whether the encoded data contains the header (offset).
+ */
+iotex::ResultCode decodeStaticArrayString(const char* pData, size_t arraySize, IotexString out[],
+										  bool containsArrayOffset = true);
 
 size_t getDynamicArraySize(const char* pData);
 
 iotex::ResultCode decodeUintGeneric(const char* pData, size_t uintSize, uint64_t* out);
 iotex::ResultCode decodeIntGeneric(const char* pData, size_t uintSize, int64_t* out);
-iotex::ResultCode decodeString(const char* pData, size_t size, IotexString& out);
-iotex::ResultCode decodeAddress(const char data[64], char out[ETH_ADDRESS_C_STRING_SIZE]);
-bool decodeBool(const char data[64]);
 
 template<uint8_t size>
 ResultCode decodeUint(const char* pData, size_t dataSize, uint64_t* out)
