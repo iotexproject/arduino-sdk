@@ -213,3 +213,251 @@ size_t iotex::abi::decode::getDynamicArraySize(const char* pData)
 {
 	return decodeUint64(pData);
 }
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayUint8(const char* pData, size_t arraySize, uint8_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeUint8(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayInt8(const char* pData, size_t arraySize, int8_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeInt8(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayUint16(const char* pData, size_t arraySize, uint16_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeUint16(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayInt16(const char* pData, size_t arraySize, int16_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeUint16(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayUint32(const char* pData, size_t arraySize, uint32_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeUint32(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayInt32(const char* pData, size_t arraySize, int32_t out[])
+{
+	for (uint8_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeInt32(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayUint64(const char* pData, size_t arraySize, uint64_t out[])
+{
+	for (size_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeUint64(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayUint256(const char* pData, size_t arraySize, iotex::bignum::Bignum out[])
+{
+	for (size_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		decodeBigUint(pWord, 256, out[i]);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayInt64(const char* pData, size_t arraySize, int64_t out[])
+{
+	for (size_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeInt64(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayBool(const char* pData, size_t arraySize, bool out[])
+{
+	for (size_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		out[i] = decodeBool(pWord);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayAddress(const char* pData, size_t arraySize, char out[][ETH_ADDRESS_C_STRING_SIZE])
+{
+	if (strlen(pData) < wordStrLen * arraySize)
+	{
+		return ResultCode::ERROR_BAD_PARAMETER;
+	}
+
+	for (size_t i=0; i<arraySize; i++)
+	{
+		const char* pWord = pData + (i*wordStrLen);
+		decodeAddress(pWord, out[i]);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayStaticBytes(const char* pData, size_t arraySize, size_t bytesSize, std::vector<std::vector<uint8_t>>& out)
+{
+	size_t elementStrlen = bytesSize*2 / wordStrLen; 
+	if (bytesSize % 32) { elementStrlen += wordStrLen; }
+	if (strlen(pData) < elementStrlen * arraySize)
+	{
+		return ResultCode::ERROR_BAD_PARAMETER;
+	}
+
+	for (size_t i=0; i<arraySize; i++)
+	{
+		pData += (i*wordStrLen);
+		uint8_t buf[bytesSize];
+		decodeStaticBytes(pData, bytesSize, buf);
+		std::vector<uint8_t> outEl;
+		outEl.reserve(bytesSize);
+		for (int i=0; i<bytesSize; i++) { outEl.push_back(buf[i]); }
+		out.push_back(outEl);
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayDynamicBytes(const char* pData, size_t arraySize, std::vector<std::vector<uint8_t>>& out, bool containsArrayOffset)
+{
+	// A static array of n bytes has the following elements:
+	// Word 1: Offset to the start of the array
+	// Words 2 - 2+n: Offsetd to the start of each element
+	// Words 2+n - end: the encoding of each of the elements
+	// Each element is encoded using:
+	// Word 1: the bytes length encoded as uint
+	// Word 2 - end: the encoded bytes.
+
+	if (strlen(pData) < wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+	
+	// Check for the offset and move the pointer to the start of the array.
+	if (containsArrayOffset)
+	{
+		uint64_t offset = decodeUint64(pData);
+		// Move to the start of the offset
+		if (strlen(pData) < offset*2) { return ResultCode::ERROR_BAD_PARAMETER; }
+		pData += offset * 2;
+	}
+
+	// Check the string is long enough to contain all elements offsets.
+	if (strlen(pData) < arraySize*wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+	// We don't need to parse each of the elements offsets. Just skip them.
+	for (size_t i=0; i<arraySize; i++)
+	{
+		pData += wordStrLen;
+	}
+
+	// Loop over each element and decode it.
+	for (size_t i=0; i<arraySize; i++)
+	{
+		// Get the element size.
+		uint64_t len = decodeUint64(pData);
+		if (strlen(pData) < (len*2) + wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+		pData += wordStrLen;
+		uint8_t buf[len];
+		ResultCode ret = decodeStaticBytes(pData, len, buf);
+		if (ret != ResultCode::SUCCESS) {return ret; }
+		
+		std::vector<uint8_t> outEl;
+		outEl.reserve(len);
+		for (int i=0; i<len; i++) { outEl.push_back(buf[i]); }
+		out.push_back(outEl);
+
+		uint64_t wordCount = len / 32;
+		if(len%32) { ++wordCount; }
+		pData += wordCount * wordStrLen;
+	}
+
+	return ResultCode::SUCCESS;
+}
+
+iotex::ResultCode iotex::abi::decode::decodeStaticArrayString(const char* pData, size_t arraySize, IotexString out[], bool containsArrayOffset)
+{
+	// A static array of n strings has the following elements:
+	// Word 1: Offset to the start of the array
+	// Words 2 - 2+n: Offsetd to the start of each element
+	// Words 2+n - end: the encoding of each of the elements
+	// Each element is encoded using:
+	// Word 1: the string length encoded as uint
+	// Word 2 - end: the encoded string.
+	
+	if (strlen(pData) < wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+	
+	// Check for the offset and move the pointer to the start of the array.
+	if (containsArrayOffset)
+	{
+		uint64_t offset = decodeUint64(pData);
+		// Move to the start of the offset
+		if (strlen(pData) < offset*2) { return ResultCode::ERROR_BAD_PARAMETER; }
+		pData += offset * 2;
+	}
+
+	// Check the string is long enough to contain all elements offsets.
+	if (strlen(pData) < arraySize*wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+	// We don't need to parse each of the elements offsets. Just skip them.
+	for (size_t i=0; i<arraySize; i++)
+	{
+		pData += wordStrLen;
+	}
+
+	// Loop over each element and decode it.
+	for (size_t i=0; i<arraySize; i++)
+	{
+		// Get the element size.
+		uint64_t len = decodeUint64(pData);
+		if (strlen(pData) < (len*2) + wordStrLen) { return ResultCode::ERROR_BAD_PARAMETER; }
+		ResultCode ret = decodeString(pData, len, out[i], false);
+		pData += wordStrLen;
+		if (ret != ResultCode::SUCCESS) {return ret; }
+		uint64_t wordCount = len / 32;
+		if(len%32) { ++wordCount; }
+		pData += wordCount * wordStrLen;
+	}
+
+	return ResultCode::SUCCESS;
+}
