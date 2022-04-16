@@ -35,3 +35,8 @@ Bignum& Bignum::operator=(const Bignum& bignum)
     _u256 = uint256_t(bignum.ToString(NumericBase::Base16).c_str(), 16);
     return *this;
 }
+
+bool Bignum::operator==(const Bignum& c) const
+{
+    return _u256 == c._u256;
+}

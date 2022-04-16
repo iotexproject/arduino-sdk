@@ -42,6 +42,8 @@ class Bignum
 
 	Bignum& operator=(const Bignum& bignum);
 
+	bool operator==(const Bignum& c) const;
+
   private:
 	uint256_t _u256;
 };
