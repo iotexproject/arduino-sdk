@@ -30,8 +30,8 @@ namespace responsetypes
 
 struct AccountMeta
 {
-	char address[IOTEX_ADDRESS_C_STRING_SIZE];
-	char balance[IOTEX_MAX_BALANCE_STRLEN + 1];
+	char address[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
+	char balance[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
 	IotexString nonce;
 	IotexString pendingNonce;
 	IotexString numActions;
@@ -46,15 +46,15 @@ enum Encoding
 
 struct Transfer
 {
-	char amount[IOTEX_MAX_BALANCE_STRLEN + 1];
-	char recipient[IOTEX_ADDRESS_C_STRING_SIZE];
+	char amount[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
+	char recipient[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
 	IotexString payload;
 };
 
 struct Execution
 {
-	char amount[IOTEX_MAX_BALANCE_STRLEN + 1];
-	char contract[IOTEX_ADDRESS_C_STRING_SIZE];
+	char amount[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
+	char contract[IOTEX_ADDRESS_C_STRING_SIZE]= {0};
 	IotexString data;
 };
 
@@ -63,7 +63,7 @@ struct ActionCore_Transfer
 	uint32_t version;
 	uint64_t nonce;
 	uint64_t gasLimit;
-	char gasPrice[IOTEX_MAX_BALANCE_STRLEN + 1];
+	char gasPrice[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
 	uint32_t chainId;
 	Transfer transfer;
 };
@@ -73,51 +73,51 @@ struct ActionCore_Execution
 	uint32_t version;
 	uint64_t nonce;
 	uint64_t gasLimit;
-	char gasPrice[IOTEX_MAX_BALANCE_STRLEN + 1];
+	char gasPrice[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
 	Execution execution;
 };
 
 struct Action_Transfer
 {
 	ActionCore_Transfer core;
-	char senderPublicKey[IOTEX_PUBLIC_KEY_C_STRING_SIZE];
-	char signature[IOTEX_SIGNATURE_C_STRING_SIZE];
+	char senderPublicKey[IOTEX_PUBLIC_KEY_C_STRING_SIZE] = {0};
+	char signature[IOTEX_SIGNATURE_C_STRING_SIZE] = {0};
 	// Encoding encoding;
 };
 
 struct Action_Execution
 {
 	ActionCore_Execution core;
-	char senderPublicKey[IOTEX_PUBLIC_KEY_C_STRING_SIZE];
-	char signature[IOTEX_SIGNATURE_C_STRING_SIZE];
+	char senderPublicKey[IOTEX_PUBLIC_KEY_C_STRING_SIZE] = {0};
+	char signature[IOTEX_SIGNATURE_C_STRING_SIZE] = {0};
 	// Encoding encoding;
 };
 
 struct ActionInfo_Transfer
 {
 	Action_Transfer action;
-	char actHash[IOTEX_HASH_C_STRING_SIZE];
-	char blkHash[IOTEX_HASH_C_STRING_SIZE];
-	char timestamp[IOTEX_TIMESTAMP_STRLEN + 1];
+	char actHash[IOTEX_HASH_C_STRING_SIZE] = {0};
+	char blkHash[IOTEX_HASH_C_STRING_SIZE] = {0};
+	char timestamp[IOTEX_TIMESTAMP_STRLEN + 1] = {0};
 	IotexString blkHeight;
-	char sender[IOTEX_ADDRESS_C_STRING_SIZE];
-	char gasFee[IOTEX_MAX_BALANCE_STRLEN + 1];
+	char sender[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
+	char gasFee[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
 };
 
 struct ActionInfo_Execution
 {
 	Action_Execution action;
-	char actHash[IOTEX_HASH_C_STRING_SIZE];
-	char blkHash[IOTEX_HASH_C_STRING_SIZE];
-	char timestamp[IOTEX_TIMESTAMP_STRLEN + 1];
+	char actHash[IOTEX_HASH_C_STRING_SIZE] = {0};
+	char blkHash[IOTEX_HASH_C_STRING_SIZE] = {0};
+	char timestamp[IOTEX_TIMESTAMP_STRLEN + 1] = {0};
 	IotexString blkHeight;
-	char sender[IOTEX_ADDRESS_C_STRING_SIZE];
-	char gasFee[IOTEX_MAX_BALANCE_STRLEN + 1];
+	char sender[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
+	char gasFee[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
 };
 
 struct BlockIdentifier
 {
-	char hash[IOTEX_HASH_C_STRING_SIZE];
+	char hash[IOTEX_HASH_C_STRING_SIZE] = {0};
 	IotexString height;
 };
 
@@ -171,7 +171,7 @@ struct SendExecutionResponse
 	ResultCode fromJson(IotexString jsonString);
 
   public:
-	char hash[IOTEX_HASH_C_STRING_SIZE];
+	char hash[IOTEX_HASH_C_STRING_SIZE] = {0};
 };
 
 struct Receipt
@@ -182,9 +182,9 @@ struct Receipt
   public:
 	uint64_t status;
 	uint64_t blkHeight;
-	char actHash[IOTEX_HASH_C_STRING_SIZE];
+	char actHash[IOTEX_HASH_C_STRING_SIZE] = {0};
 	uint64_t gasConsumed;
-	char contractAddress[IOTEX_ADDRESS_C_STRING_SIZE];
+	char contractAddress[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
 	IotexString executionRevertMsg;
 	uint32_t txIndex;
 };
