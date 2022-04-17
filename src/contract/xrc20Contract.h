@@ -5,7 +5,8 @@
 #include "IoTeXConstants.h"
 
 #define IOTEX_CONTRACT_ENCODED_FUNCTIONSELECTOR_SIZE 4
-#define IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE 36
+#define IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE 4
+#define IOTEX_CONTRACT_ENCODED_BALANCEOF_SIZE 36
 #define IOTEX_CONTRACT_ENCODED_TRANSFER_SIZE 68
 
 namespace iotex
@@ -19,7 +20,8 @@ class Xrc20Contract
 	 *
 	 * @param[out] data The buffer where the data is stored
 	 */
-	static void generateCallDataForTotalSupply(uint8_t data[4]);
+	static void
+		generateCallDataForTotalSupply(uint8_t data[IOTEX_CONTRACT_ENCODED_TOTALSUPPLY_SIZE]);
 
 	/**
 	 * @brief Generates the Ethereum ABI encoded data for calling the balanceOf() function of a
