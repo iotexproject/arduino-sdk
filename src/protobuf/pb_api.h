@@ -54,7 +54,7 @@ struct Transfer
 struct Execution
 {
 	char amount[IOTEX_MAX_BALANCE_STRLEN + 1] = {0};
-	char contract[IOTEX_ADDRESS_C_STRING_SIZE]= {0};
+	char contract[IOTEX_ADDRESS_C_STRING_SIZE] = {0};
 	IotexString data;
 };
 

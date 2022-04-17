@@ -190,7 +190,8 @@ iotex::ResultCode decodeStaticArrayUint64(const char* pData, size_t arraySize, u
  * @param[out] out A pointer to a Bignum where to store the decoded values. Must be able to hold
  * at least arraySize elements.
  */
-iotex::ResultCode decodeStaticArrayUint256(const char* pData, size_t arraySize, iotex::bignum::Bignum out[]);
+iotex::ResultCode decodeStaticArrayUint256(const char* pData, size_t arraySize,
+										   iotex::bignum::Bignum out[]);
 
 /**
  * @brief Decodes an ABI encoded static array of boolean values.
@@ -261,8 +262,9 @@ iotex::ResultCode decodeStaticArrayAddress(const char* pData, size_t arraySize,
  * @param bytesSize The nuber of bytes in each element of the array.
  * @param[out] out A vector of bytes where to store the decoded values.
  */
-iotex::ResultCode decodeStaticArrayStaticBytes(const char* pData, size_t arraySize, size_t
-bytesSize, std::vector<std::vector<uint8_t>>& out);
+iotex::ResultCode decodeStaticArrayStaticBytes(const char* pData, size_t arraySize,
+											   size_t bytesSize,
+											   std::vector<std::vector<uint8_t>>& out);
 
 /**
  * @brief Decodes an ABI encoded static array of static bytes.
@@ -273,7 +275,8 @@ bytesSize, std::vector<std::vector<uint8_t>>& out);
  * @param containsArrayOffset Whether the encoded data contains the header (offset).
  */
 iotex::ResultCode decodeStaticArrayDynamicBytes(const char* pData, size_t arraySize,
-std::vector<std::vector<uint8_t>>& out, bool containsArrayOffset = true);
+												std::vector<std::vector<uint8_t>>& out,
+												bool containsArrayOffset = true);
 
 /**
  * @brief Decodes an ABI encoded static array of strings.
