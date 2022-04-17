@@ -39,7 +39,9 @@ RUN mkdir /workdir/project && \
     python3 -m pip install --ignore-installed -U PyYAML && \
     # ClangFormat
     python3 -m pip install -U six && \
-    apt-get -y install clang-format
+    apt-get -y install clang-format && \
+    # Add standard version for conventional changelog
+    npm install --save-dev standard-version
 
 # Envoy - for grpc-http server
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg && \
