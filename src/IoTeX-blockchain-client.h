@@ -1,7 +1,9 @@
 #ifndef IOTEX_CLIENT_H
 #define IOTEX_CLIENT_H
 
+#include "abi/abiDecode.h"
 #include "account/account.h"
+#include "account/address.h"
 #include "api/wallet/wallets.h"
 #include "connection/connection.h"
 #include "contract/contract.h"
@@ -11,7 +13,6 @@
 #include "IoTeXResultCodes.h"
 #include "random/random.h"
 #include "storage/storage.h"
-#include "abi/abiDecode.h"
 
 using namespace iotex;
 using namespace iotex::api;

@@ -50,6 +50,7 @@ set (IOTEX_UNIT_TESTS_SOURCES
     src/contract/contractTests.cpp
     src/contract/xrc20ContractTests.cpp
     src/account/accountTests_Execution.cpp
+    src/account/addressTests.cpp
     src/signer/signerTests.cpp
 )
 
