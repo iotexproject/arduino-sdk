@@ -16,7 +16,7 @@ config = json.load(configFile)
 LISTEN_PORT = config["port"]
 
 class GrpcStatus(Enum):
-    success = 0,
+    success = 0
     failed_convert_contract_address = 13
     failed_known_transaction = 13
 
