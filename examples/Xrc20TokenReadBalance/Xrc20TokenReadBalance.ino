@@ -41,9 +41,6 @@ void initWiFi()
 }
 
 void setup() {
-    IotexHelpers.setModuleLogLevel("HTTP", IotexLogLevel::DEBUG);
-    IotexHelpers.setGlobalLogLevel(IotexLogLevel::DEBUG);
-
     Serial.begin(115200);
 
     #if defined(__SAMD21G18A__)
@@ -58,7 +55,7 @@ void loop()
 {
     // XRC20 Token address and waller address to check.
     const char vitaTokenAddress[] = "io1hp6y4eqr90j7tmul4w2wa8pm7wx462hq0mg4tw";
-    const uint8_t address[] = { 0x67, 0x7f, 0xa2, 0x95, 0x34, 0x6c, 0x3e, 0x08, 0xc7, 0x3f, 0x24, 0x61, 0x55, 0x9c, 0xb1, 0x1f, 0x9b, 0x44, 0x17, 0xcb };
+    iotex::Address address("0x677fa295346c3e08c73f2461559cb11f9b4417cb", AddressFormat::ETH);
     // From address. Should have enough balance to perform the action.
     const char fromAddress[] = "io1r8n7xah8cgfm0el8u3kvwzja6zrd4le2zce7sk";
 
@@ -67,7 +64,7 @@ void loop()
     strcpy(execution.contract, vitaTokenAddress);
     // Create the call data.
     uint8_t callDataBytes[IOTEX_CONTRACT_ENCODED_BALANCEOF_SIZE] = {0};
-    Xrc20Contract::generateCallDataForBalanceOf(address, callDataBytes);
+    Xrc20Contract::generateCallDataForBalanceOf(address.Bytes(), callDataBytes);
     char callDataStr[sizeof(callDataBytes)*2 + 1] ={0};
     
     signer.hex2str(callDataBytes, sizeof(callDataBytes), callDataStr, sizeof(callDataBytes)*2);
@@ -82,7 +79,7 @@ void loop()
     ResultCode result = connection.api.wallets.readContract(execution, fromAddress, 200000, &response);
     Serial.print("Result : ");
     Serial.println(IotexHelpers.GetResultString(result));
-    Serial.print("Data: ");
+    Serial.print("Return data: ");
     Serial.println(response.data);
 
     // Decode the data
