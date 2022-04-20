@@ -58,7 +58,7 @@ void iotex::Address::ConstructFromEth(const char* address)
 
     // Create io address
     std::vector<uint8_t> bytes(_bytes, _bytes + ETH_ADDRESS_SIZE);
-    std::string io = _io;
+    IotexString io = _io;
     encoder.bech32_encode(bytes, io);
-    memcpy(_io, io.data(), IOTEX_ADDRESS_C_STRING_SIZE);
+    memcpy(_io, io.c_str(), IOTEX_ADDRESS_C_STRING_SIZE);
 }
