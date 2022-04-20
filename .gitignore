@@ -1,4 +1,5 @@
 build/*
+build-*/*
 **/.pio/*
 extern/**/tests/*
 extern/**/examples/*
