@@ -1,5 +1,5 @@
 # Base image which contains global dependencies
-FROM ubuntu:20.04 as base
+FROM ubuntu:22.04 as base
 WORKDIR /workdir
 
 # System dependencies
@@ -19,7 +19,7 @@ RUN mkdir /workdir/project && \
         libncurses5 libncurses5-dev \
         libyaml-dev libfdt1 \
         libusb-1.0-0-dev udev \
-        device-tree-compiler=1.5.1-1 \
+        device-tree-compiler \
         ruby \
         gdb \
         debian-keyring \
@@ -39,10 +39,8 @@ RUN mkdir /workdir/project && \
     python3 -m pip install --ignore-installed -U PyYAML && \
     # ClangFormat
     python3 -m pip install -U six && \
-    apt-get -y install clang-format && \
-    # Add standard version for conventional changelog
-    npm install --save-dev standard-version
-
+    apt-get -y install clang-format
+    
 # Envoy - for grpc-http server
 RUN curl -sL 'https://deb.dl.getenvoy.io/public/gpg.8115BA8E629CC074.key' | gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg && \
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://deb.dl.getenvoy.io/public/deb/ubuntu $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/getenvoy.list && \
@@ -60,7 +58,9 @@ WORKDIR /workdir/project/tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install nodejs && \
     apt-get -y update && \
     apt-get -y install npm && \
-    npm install -g abi-decoder web3
+    npm install -g abi-decoder web3 && \
+    # Add standard version for conventional changelog
+    npm install --save-dev standard-version
 
 WORKDIR /workdir/project
 ENV LC_ALL=C.UTF-8
