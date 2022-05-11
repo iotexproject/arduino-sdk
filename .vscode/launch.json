@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/tests/iotex_unit_tests",
             "args": [
-                // "--gtest_filter=\"*.ReadContract*\""
+                // "--gtest_filter=\"ContractTests.*\""
             ],
             "cwd": "${workspaceFolder}",
             "MIMode": "gdb",
@@ -37,7 +37,7 @@
             "cwd": "${workspaceFolder}",
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
-            "preLaunchTask": "Arduino: Build unit tests",
+            "preLaunchTask": "IoTeX SDK: Build unit tests (debug)",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

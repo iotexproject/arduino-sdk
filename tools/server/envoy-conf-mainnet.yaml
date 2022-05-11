@@ -59,6 +59,5 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                # address: api.iotex.one
-                address: api.testnet.iotex.one
+                address: api.iotex.one
                 port_value: 80

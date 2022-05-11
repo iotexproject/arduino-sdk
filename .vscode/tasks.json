@@ -3,7 +3,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "IoTeX SDK: Build unit tests",
+            "label": "IoTeX SDK: Build unit tests (debug)",
             "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON ../ && make -j 6 ",
             "options": {
                 "cwd": "${workspaceRoot}/"
@@ -22,8 +22,27 @@
         },
         {
             "type": "shell",
-            "label": "Http-grpc server: start",
-            "command": "envoy -c envoy-conf.yaml",
+            "label": "IoTeX SDK: Build unit tests (release)",
+            "command": "cd ${workspaceRoot}/build && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON ../ && make -j 6 ",
+            "options": {
+                "cwd": "${workspaceRoot}/"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "{command:workbench.files.action.saveAllInGroup}"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "HTTP-JSONRPC server: start (mainnet)",
+            "command": "envoy -c envoy-conf-mainnet.yaml",
             "options": {
                 "cwd": "${workspaceRoot}/tools/server"
             },
@@ -32,13 +51,29 @@
             ],
             "dependsOn": [
                 "{command:workbench.files.action.saveAllInGroup}",
-                "Http-grpc server: generate protobufs"
+                "HTTP-JSONRPC server: generate protobufs"
             ],
             "dependsOrder": "sequence"
         },
         {
             "type": "shell",
-            "label": "Http-grpc server: stop",
+            "label": "HTTP-JSONRPC server: start (testnet)",
+            "command": "envoy -c envoy-conf-testnet.yaml",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "{command:workbench.files.action.saveAllInGroup}",
+                "HTTP-JSONRPC server: generate protobufs"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "HTTP-JSONRPC server: stop",
             "command": "killall envoy",
             "options": {
                 "cwd": "${workspaceRoot}"
@@ -46,13 +81,13 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "dependsOn": [ "Http-grpc server: generate protobufs" ],
+            "dependsOn": [ "HTTP-JSONRPC server: generate protobufs" ],
             "dependsOrder": "sequence"
         },
         {
             "type": "shell",
-            "label": "Http-grpc server: restart",
-            "command": "killall envoy && envoy -c envoy-conf.yaml",
+            "label": "HTTP-JSONRPC server: restart (mainnet)",
+            "command": "killall envoy && envoy -c envoy-conf-mainnet.yaml",
             "options": {
                 "cwd": "${workspaceRoot}/tools/server"
             },
@@ -64,7 +99,20 @@
         },
         {
             "type": "shell",
-            "label": "Http-grpc server: generate protobufs",
+            "label": "HTTP-JSONRPC server: restart (testnet)",
+            "command": "killall envoy && envoy -c envoy-conf-testnet.yaml",
+            "options": {
+                "cwd": "${workspaceRoot}/tools/server"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [],
+            "dependsOrder": "sequence"
+        },
+        {
+            "type": "shell",
+            "label": "HTTP-JSONRPC server: generate protobufs",
             "command": "./generate_proto.sh --clone",
             "options": {
                 "cwd": "${workspaceRoot}/tools/server"
@@ -79,7 +127,7 @@
         },
         {
             "type": "shell",
-            "label": "Fake http-grpc server: launch",
+            "label": "Fake http-jsonrpc server: start",
             "command": "python3 server_fake.py",
             "options": {
                 "cwd": "${workspaceRoot}/tools/server-fake"
