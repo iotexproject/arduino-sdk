@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['contract_0',['Contract',['../classiotex_1_1_contract.html#a902b340485c89ed31b7a9f12e6a1ed0f',1,'iotex::Contract::Contract(IotexString &amp;abiJson)'],['../classiotex_1_1_contract.html#a50400573ab115557db6caa65ada1d889',1,'iotex::Contract::Contract(std::vector&lt; iotex::abi::FunctionAbi &gt; &amp;functions)']]]
+  ['bignum_0',['Bignum',['../classiotex_1_1bignum_1_1_bignum.html#a733091471dd0bedd38be9776ba7188a4',1,'iotex::bignum::Bignum::Bignum()'],['../classiotex_1_1bignum_1_1_bignum.html#aacf3b195ab546b9e4e0b443ddf5978ea',1,'iotex::bignum::Bignum::Bignum(const char *str, NumericBase base)']]]
 ];

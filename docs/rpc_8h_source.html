@@ -106,19 +106,22 @@ $(function() {
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                     <span class="keyword">const</span> <a class="code hl_struct" href="structiotex_1_1responsetypes_1_1_action_core___execution.html">responsetypes::ActionCore_Execution</a> execution,</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                                     <span class="keyword">const</span> uint8_t senderPubKey[IOTEX_PUBLIC_KEY_SIZE],</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                                     <span class="keyword">const</span> uint8_t signature[IOTEX_SIGNATURE_SIZE]);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>} <span class="comment">// namespace rpc</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// namespace api</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace iotex</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> <a class="code hl_struct" href="structiotex_1_1api_1_1rpc_1_1_rpc_call_data.html">RpcCallData</a> readContract(<a class="code hl_class" href="classiotex_1_1_host.html">Host</a>&amp; host, <span class="keyword">const</span> <a class="code hl_struct" href="structiotex_1_1responsetypes_1_1_execution.html">responsetypes::Execution</a> execution,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                                    uint64_t gasLimit, <span class="keyword">const</span> IotexString callerAddress);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace rpc</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace api</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>} <span class="comment">// namespace iotex</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassiotex_1_1_host_html"><div class="ttname"><a href="classiotex_1_1_host.html">iotex::Host</a></div><div class="ttdef"><b>Definition:</b> host.h:17</div></div>
 <div class="ttc" id="aclassiotex_1_1api_1_1rpc_1_1_wallets_html"><div class="ttname"><a href="classiotex_1_1api_1_1rpc_1_1_wallets.html">iotex::api::rpc::Wallets</a></div><div class="ttdoc">A class with methods to generate RPC data.</div><div class="ttdef"><b>Definition:</b> rpc.h:28</div></div>
 <div class="ttc" id="anamespaceiotex_html"><div class="ttname"><a href="namespaceiotex.html">iotex</a></div><div class="ttdef"><b>Definition:</b> abi.h:12</div></div>
 <div class="ttc" id="astructiotex_1_1api_1_1rpc_1_1_rpc_call_data_html"><div class="ttname"><a href="structiotex_1_1api_1_1rpc_1_1_rpc_call_data.html">iotex::api::rpc::RpcCallData</a></div><div class="ttdef"><b>Definition:</b> rpc.h:18</div></div>
 <div class="ttc" id="astructiotex_1_1responsetypes_1_1_action_core___execution_html"><div class="ttname"><a href="structiotex_1_1responsetypes_1_1_action_core___execution.html">iotex::responsetypes::ActionCore_Execution</a></div><div class="ttdef"><b>Definition:</b> pb_api.h:72</div></div>
 <div class="ttc" id="astructiotex_1_1responsetypes_1_1_action_core___transfer_html"><div class="ttname"><a href="structiotex_1_1responsetypes_1_1_action_core___transfer.html">iotex::responsetypes::ActionCore_Transfer</a></div><div class="ttdef"><b>Definition:</b> pb_api.h:62</div></div>
+<div class="ttc" id="astructiotex_1_1responsetypes_1_1_execution_html"><div class="ttname"><a href="structiotex_1_1responsetypes_1_1_execution.html">iotex::responsetypes::Execution</a></div><div class="ttdef"><b>Definition:</b> pb_api.h:55</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

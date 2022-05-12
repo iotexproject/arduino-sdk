@@ -93,6 +93,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a17928f0f8c7ce4ddf7b460a7f413a8e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_helpers.html#a17928f0f8c7ce4ddf7b460a7f413a8e1">setModuleLogLevel</a> (const std::string &amp;module, <a class="el" href="namespaceiotex.html#a71221d75e60f58d28d55b1de7df985a1">IotexLogLevel</a> level)</td></tr>
 <tr class="memdesc:a17928f0f8c7ce4ddf7b460a7f413a8e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Mlog level for a module. Note that the global lov level can override a module log level.  <a href="classiotex_1_1_helpers.html#a17928f0f8c7ce4ddf7b460a7f413a8e1">More...</a><br /></td></tr>
 <tr class="separator:a17928f0f8c7ce4ddf7b460a7f413a8e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea613a8cf209e5cbd6d7522285ac8f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1_helpers.html#aaea613a8cf209e5cbd6d7522285ac8f6">endianSwap</a> (uint8_t *pData, uint64_t size)</td></tr>
+<tr class="memdesc:aaea613a8cf209e5cbd6d7522285ac8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the endianness of a byte array.  <a href="classiotex_1_1_helpers.html#aaea613a8cf209e5cbd6d7522285ac8f6">More...</a><br /></td></tr>
+<tr class="separator:aaea613a8cf209e5cbd6d7522285ac8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -103,6 +106,43 @@ cpplogger::Logger&#160;</td><td class="memItemRight" valign="bottom"><b>logger</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class that contains helper methods. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaea613a8cf209e5cbd6d7522285ac8f6" name="aaea613a8cf209e5cbd6d7522285ac8f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaea613a8cf209e5cbd6d7522285ac8f6">&#9670;&nbsp;</a></span>endianSwap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void iotex::Helpers::endianSwap </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>pData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Swaps the endianness of a byte array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pData</td><td>A pointer to the data </td></tr>
+    <tr><td class="paramname">size</td><td>The size of the data in bytes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a6e676e9ffce63a938173d2a4315c7bfc" name="a6e676e9ffce63a938173d2a4315c7bfc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e676e9ffce63a938173d2a4315c7bfc">&#9670;&nbsp;</a></span>GetResultString()</h2>
 

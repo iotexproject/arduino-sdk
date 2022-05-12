@@ -109,6 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af9467c21aea73cac1cd0806256dc2469"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1api_1_1_i_wallets.html#af9467c21aea73cac1cd0806256dc2469">sendExecution</a> (const uint8_t senderPubKey[IOTEX_PUBLIC_KEY_SIZE], const uint8_t signature[IOTEX_SIGNATURE_SIZE], const <a class="el" href="structiotex_1_1responsetypes_1_1_action_core___execution.html">responsetypes::ActionCore_Execution</a> &amp;transfer, uint8_t hash[IOTEX_HASH_SIZE])=0</td></tr>
 <tr class="memdesc:af9467c21aea73cac1cd0806256dc2469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an execution action to the blockchain.  <a href="classiotex_1_1api_1_1_i_wallets.html#af9467c21aea73cac1cd0806256dc2469">More...</a><br /></td></tr>
 <tr class="separator:af9467c21aea73cac1cd0806256dc2469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f0f0f9ecf3ba8ef409dd412ade87cf"><td class="memItemLeft" align="right" valign="top">virtual ResultCode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classiotex_1_1api_1_1_i_wallets.html#a24f0f0f9ecf3ba8ef409dd412ade87cf">readContract</a> (const <a class="el" href="structiotex_1_1responsetypes_1_1_execution.html">responsetypes::Execution</a> &amp;execution, const IotexString callerAddress, uint64_t gasLimit, <a class="el" href="structiotex_1_1responsetypes_1_1_read_contract_response.html">responsetypes::ReadContractResponse</a> *response)=0</td></tr>
+<tr class="memdesc:a24f0f0f9ecf3ba8ef409dd412ade87cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a contract.  <a href="classiotex_1_1api_1_1_i_wallets.html#a24f0f0f9ecf3ba8ef409dd412ade87cf">More...</a><br /></td></tr>
+<tr class="separator:a24f0f0f9ecf3ba8ef409dd412ade87cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -323,6 +326,68 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>ResultCode Success or an error code </dd></dl>
 
 <p>Implemented in <a class="el" href="classiotex_1_1api_1_1_wallets.html#a40c20dbde72111a891be85111f6e7600">iotex::api::Wallets</a>.</p>
+
+</div>
+</div>
+<a id="a24f0f0f9ecf3ba8ef409dd412ade87cf" name="a24f0f0f9ecf3ba8ef409dd412ade87cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f0f0f9ecf3ba8ef409dd412ade87cf">&#9670;&nbsp;</a></span>readContract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ResultCode iotex::api::IWallets::readContract </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structiotex_1_1responsetypes_1_1_execution.html">responsetypes::Execution</a> &amp;&#160;</td>
+          <td class="paramname"><em>execution</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const IotexString&#160;</td>
+          <td class="paramname"><em>callerAddress</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>gasLimit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structiotex_1_1responsetypes_1_1_read_contract_response.html">responsetypes::ReadContractResponse</a> *&#160;</td>
+          <td class="paramname"><em>response</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a contract. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">execution</td><td>The execution data </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">callerAddress</td><td>The caller address </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">gasLimit</td><td>The gas limit </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">response</td><td>The abi encoded response if successful </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ResultCode Success or an error code </dd></dl>
+
+<p>Implemented in <a class="el" href="classiotex_1_1api_1_1_wallets.html#a9a870da5e7dba1b09ff6be9e1a029497">iotex::api::Wallets</a>.</p>
 
 </div>
 </div>

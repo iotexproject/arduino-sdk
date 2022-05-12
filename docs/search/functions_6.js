@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vectortohexstring_0',['vectorToHexString',['../classiotex_1_1_helpers.html#a025f21788cb46d9b92d307b4d522ae25',1,'iotex::Helpers']]]
+  ['hex2str_0',['hex2str',['../classiotex_1_1_signer.html#a8b50a4c0f4f872f92ddbc6953ad3bfd8',1,'iotex::Signer']]]
 ];

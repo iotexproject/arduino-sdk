@@ -11,6 +11,7 @@ var searchData=
   ['actioncore_5ftransfer_8',['ActionCore_Transfer',['../structiotex_1_1responsetypes_1_1_action_core___transfer.html',1,'iotex::responsetypes']]],
   ['actioninfo_5fexecution_9',['ActionInfo_Execution',['../structiotex_1_1responsetypes_1_1_action_info___execution.html',1,'iotex::responsetypes']]],
   ['actioninfo_5ftransfer_10',['ActionInfo_Transfer',['../structiotex_1_1responsetypes_1_1_action_info___transfer.html',1,'iotex::responsetypes']]],
-  ['api_11',['Api',['../classiotex_1_1_api.html',1,'iotex']]],
-  ['arrayjsonprop_12',['ArrayJsonProp',['../structiotex_1_1json_1_1_array_json_prop.html',1,'iotex::json']]]
+  ['address_11',['Address',['../classiotex_1_1_address.html',1,'iotex']]],
+  ['api_12',['Api',['../classiotex_1_1_api.html',1,'iotex']]],
+  ['arrayjsonprop_13',['ArrayJsonProp',['../structiotex_1_1json_1_1_array_json_prop.html',1,'iotex::json']]]
 ];

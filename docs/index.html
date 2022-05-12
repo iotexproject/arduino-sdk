@@ -65,11 +65,147 @@ $(function() {
   <div class="headertitle"><div class="title">IoTeX-Client </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> A simple C++ API client implementation in for the IoTeX Blockchain Compatible with some popular Arduino boards and Raspberry Pi/Unix environments</p>
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> A simple C++ API client implementation in for the IoTeX Blockchain. <br  />
+ Compatible with some popular Arduino boards and Raspberry Pi/Unix environments. <br  />
+</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Documentation</h1>
-<p >You can find the installation instructions in the <a href="https://github.com/as-iotex/iotex-arduino/wiki/Home">wiki</a> <br  />
- For more detailed documentation refer to the library <a href="https://as-iotex.github.io/iotex-arduino/classiotex_1_1abi_1_1_function_abi.html">documentation</a> </p>
+Documentation / Usage</h1>
+<p >You can find the installation instructions in the <a href="https://github.com/iotexproject/arduino-sdk/wiki/Home">wiki</a>. <br  />
+ For more detailed documentation refer to the <a href="https://docs.iotex.io/verifiable-data/arduino-and-more">official documentation</a> or the <a href="https://iotexproject.github.io/arduino-sdk">API reference</a>. <br  />
+</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Examples</h1>
+<p >The <code>examples</code> directory contains examples that demonstrate most of the library functions. They can be used with both Arduino IDE and PlatformIO. <br  />
+</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Development environment</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Docker</h2>
+<p >The Dockerfile provided sets up a Ubuntu based dev container with all required dependencies to build and test the library. <br  />
+</p>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Using the dev container with VSCode</h3>
+<p >Follow the below steps in order to use VSCode to develop and contribute to the library: <br  />
+</p>
+<ol type="1">
+<li>Install the <em>Remote - Containers</em> VSCode extension.</li>
+<li>Open the directory containing this repository in VSCode.</li>
+<li>Press <code>F1</code> and enter <code>Remote-Containers: Rebuild and reopen in container</code>. <br  />
+</li>
+<li>Wait until the container is started. It should take a couple of minutes. <br  />
+</li>
+</ol>
+<h3><a class="anchor" id="autotoc_md6"></a>
+Building using the dev container</h3>
+<p >Once the container is started and open in VSCode you should be able to run the provided tasks in <code>tasks.json</code>. <br  />
+ You can get a list of tasks and run them by pressing<code>F1</code> and entering <code>Run task</code>. The main tasks are described below: <br  />
+</p>
+<h4><a class="anchor" id="autotoc_md7"></a>
+Build tasks</h4>
+<p >The following tasks can be used to build the tests. The build output will be placed in the <code>build</code> directory. The tests executable will be located at <code>build/tests/iotex_unit_tests</code>. <br  />
+</p>
+<ul>
+<li><b>IoTeX SDK: Build unit tests (debug):</b> builds the unit tests in debug mode</li>
+<li><b>IoTeX SDK: Build unit tests (release):</b> builds the unit tests in release mode <br  />
+</li>
+</ul>
+<h4><a class="anchor" id="autotoc_md8"></a>
+Test/tooling services tasks</h4>
+<ul>
+<li><b>HTTP-JSONRPC server: start (mainnet)</b>: starts the envoy HTTP-JSONRPC proxy pointing it to mainnet. The configuration file is located in <code>tools/server/envoy-conf-testnet.yaml</code>. <br  />
+</li>
+<li><b>HTTP-JSONRPC server: start (testnet):</b> starts the envoy HTTP-JSONRPC proxy pointing it to testnet. The configuration file is located in <code>tools/server/envoy-conf-mainnet.yaml</code>. <br  />
+</li>
+<li><b>HTTP-JSONRPC server: stop:</b> starts the envoy HTTP-JSONRPC proxy. <br  />
+</li>
+<li><b>HTTP-JSONRPC server: restart (mainnet):</b> restarts the envoy HTTP-JSONRPC proxy pointing it to mainnet. <br  />
+</li>
+<li><b>HTTP-JSONRPC server: restart (testnet):</b> restarts the envoy HTTP-JSONRPC proxy pointing it to testnet. <br  />
+</li>
+<li><b>Fake HTTP-JSONRPC server: launch:</b> starts the fake server. This is a fake python HTTP-JSONRPC server that provides canned responses preconfigured in <code>tools/server-fake/config.json</code>. The fake server is used by the tests that. <br  />
+</li>
+</ul>
+<h4><a class="anchor" id="autotoc_md9"></a>
+Launch configurations</h4>
+<p >VSCode launch configurations are also set up for launching the unit tests in debug mode. <br  />
+ Use the VSCode Run and Debug panel to launch them. <br  />
+ Edit the <code>--gtest_filter</code> argument in <code>launch.json</code> if you want to pass a filter to the launch command. Eg: <code>"--gtest_filter=\"ContractTests.*""</code> will only run tests from the <code>ContracTests</code> test suite. <br  />
+</p>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Tools</h1>
+<p >The <code>tools</code> directory contains a set of tools that can be used to help with the development of the library. Some of them are described below: <br  />
+</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+HTTP-JSONRPC server</h2>
+<p >Located in <code>tools/server</code>. <br  />
+ A HTTP-JSONRPC server using Envoy proxy. Two configurations files are provided to connect to either mainnet or testnet. It implements the following endpoints: <br  />
+</p>
+<ul>
+<li>**/GetAccount**</li>
+<li>**/GetActions**</li>
+<li>**/SendAction**</li>
+<li>**/ReadContract**</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Fake server</h2>
+<p >Located in <code>tools/server-fake</code>. <br  />
+ A fake HTTP-JSONRPC server that provides canned responses. The responses are set up in <code>tools/server-fake/config.json</code>. <br  />
+</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Clang-format</h2>
+<p >The clang-format configuration file is located in <code>tools/.clang-format</code>. <br  />
+ Run <code>./tools/clang_format.sh</code> from the root directory to apply clang-format. <br  />
+</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Abi decoder/encoder</h2>
+<p >A JS helper script that can be used used to test/verify abi encoding. It uses the <code>abi-decoder</code> JS library. <br  />
+</p>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Build scripts</h2>
+<h3><a class="anchor" id="autotoc_md16"></a>
+build_native.sh</h3>
+<p >Builds the library and unit tests for the native (Linux) environemnt. <br  />
+</p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+build_arduino-cli.sh</h3>
+<p >Builds all the examples for each of the supported boards using <code>arduino-cli</code>. <br  />
+</p>
+<h3><a class="anchor" id="autotoc_md18"></a>
+build_platformio_.sh</h3>
+<p >Builds all the examples for each of the supported boards using <code>platformio</code>. <br  />
+</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Generating doxygen documentation</h1>
+<p >Run <code>doxygen Doxyfile</code> to regenerate the doxygen documentation. The output will be placed in the <code>docs</code> directory.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
+Generating and publishing a new release</h1>
+<p >This library uses <em>Conventional Commits</em> and <em>Conventional Changelog</em> to automete the release and changelog generation. <br  />
+ In order to generate a new release:</p>
+<ol type="1">
+<li>Update the version in <code>library.json</code> for PlatformIO <code>library.properties</code> for Arduino.</li>
+<li>Run <code>npm run release</code>. <br  />
+</li>
+<li>Push to Github. <br  />
+</li>
+<li>Create a tag matching the new release version in Github. The Arduino library manager should pick up the new release in about an hour or less. <br  />
+</li>
+<li>For PlatformIO run <code>pio package publish</code>. Credentials are needed that belong to the author of the library. <br  />
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md21"></a>
+ TODO</h1>
+<ul>
+<li>[ ] Set up CI/CD (build and test in Linux, build using arduino-cli and platformio). <br  />
+</li>
+<li>[ ] Automate release generation/publishing in CI. <br  />
+</li>
+<li>[ ] Automate doxygen generatin in CI. <br  />
+</li>
+<li>[ ] Support more ABI types. <br  />
+</li>
+<li>[ ] Improve JSON parsing. Implement a genereric JSON parsing scheme that makes it easier to add new endpoints. <br  />
+ </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
