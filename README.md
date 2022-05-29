@@ -2,6 +2,9 @@
 A simple IoTeX Blockchain client implementation in C++ for embedded systems. Supporting Arduino IDE and PlatformIO.   
 Compatible with some popular Arduino boards and Raspberry Pi/Unix environments.  
 
+## Supported boards
+The SDK has been successfully tested on ESP32 and SAMD21 -based boards. ESP8266 will also work well for anything exchept smart contract calls: in this case we have experienced random crashes.
+
 ## Documentation / Usage
 
 You can find the installation instructions in the [wiki](https://github.com/iotexproject/arduino-sdk/wiki/Home).  
