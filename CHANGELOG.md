@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/iotexproject/arduino-sdk/compare/v0.1.6...v0.2.4) (2022-05-30)
+
+
+### Features
+
+* add abi decode namespaces to arduino header ([88d592d](https://github.com/iotexproject/arduino-sdk/commit/88d592d514c14007248ddf6bf573728988d11faf))
+* add address abi decoding ([738dfae](https://github.com/iotexproject/arduino-sdk/commit/738dfaedf50f3a81fd727cc1b8014e1a8fcdf9f0))
+* add array abi decoding ([2b043f3](https://github.com/iotexproject/arduino-sdk/commit/2b043f3eb862e6917ec49003b405daed86f32d3a))
+* add bignumber abi decoding ([59d22f1](https://github.com/iotexproject/arduino-sdk/commit/59d22f1dac3eb7686975ad82c07cb0e5ad09d3a2))
+* add bool abi decoding ([20f1a58](https://github.com/iotexproject/arduino-sdk/commit/20f1a58fa1275f4104d53e9059086603fccaf30a))
+* add bytes abi decoding ([5890dc0](https://github.com/iotexproject/arduino-sdk/commit/5890dc055bb2b69d6b24e065b7d0b9104ffd307c))
+* add decode address tests ([a4495a9](https://github.com/iotexproject/arduino-sdk/commit/a4495a92dce1cb10cb0cbf8e3dd3e2973bbd94de))
+* add integer abi decoding ([6bc3d58](https://github.com/iotexproject/arduino-sdk/commit/6bc3d5829f0d07235318b20e64f553c61b91892b))
+* add readContract api endpoint ([4c26429](https://github.com/iotexproject/arduino-sdk/commit/4c26429f1265b6c6e4301c843435e8faef1be443))
+* add string abi decoding ([4a571b0](https://github.com/iotexproject/arduino-sdk/commit/4a571b0333c7eddccea7ede2e7ab08c20a03a982))
+* add tests for readContract ([323a361](https://github.com/iotexproject/arduino-sdk/commit/323a361f2ae45065d34407230f4dc10b17f05155))
+* add uint256_t library ([1aa1af8](https://github.com/iotexproject/arduino-sdk/commit/1aa1af8271de94ba1374c9da329276601aea35c8))
+* address class ([a1fd14a](https://github.com/iotexproject/arduino-sdk/commit/a1fd14ad7717866e66833ba36db4c8184aeef1ba))
+* overload equality operator in bignum ([a51f358](https://github.com/iotexproject/arduino-sdk/commit/a51f358edc9006374ae3360afb1d4fb0609e9ac8))
+
+
+### Bug Fixes
+
+* address construction ([4bb6534](https://github.com/iotexproject/arduino-sdk/commit/4bb653446f90a3015a7b38cdb885cf589b1def8d))
+* array initialization ([81587c7](https://github.com/iotexproject/arduino-sdk/commit/81587c7f7069ee622671ea9f9d35f9d9cea51092))
+* bignum ([0854a4c](https://github.com/iotexproject/arduino-sdk/commit/0854a4c9f163526a6540c2471a8364e9f05ef7de))
+* change the tests to use the test address and fake server ([0af0be6](https://github.com/iotexproject/arduino-sdk/commit/0af0be6b03fcf749a84f6fcaa67126e0f362d0c4))
+* ensure api messages are initialized ([a67ff71](https://github.com/iotexproject/arduino-sdk/commit/a67ff71032eb12d0e7c60da39b8ea5ed67624f55))
+* fake server grpc-status header error ([84c9ffe](https://github.com/iotexproject/arduino-sdk/commit/84c9ffea5cc0338d337c4d7cd81f2f47fd9f8a36))
+* hex2str return error if invalid chars ([04911ad](https://github.com/iotexproject/arduino-sdk/commit/04911ad78d50aba1bec7b79a602caae7b4fe9ea0))
+* mark input parameters as const ([629b539](https://github.com/iotexproject/arduino-sdk/commit/629b53993224ad0ad6536d4605db7620d0e90eec))
+* remove external lib exceptions from Arduino builds ([ac96b99](https://github.com/iotexproject/arduino-sdk/commit/ac96b9946ef1722dfa006a3d03ca5a5c180995e9))
+* tests ([1af7b05](https://github.com/iotexproject/arduino-sdk/commit/1af7b05df76e155d59cb09e2c008352eacdb3155))
+
 ### [0.2.3](https://github.com/iotexproject/arduino-sdk/compare/v0.1.6...v0.2.3) (2022-04-20)
 
 
