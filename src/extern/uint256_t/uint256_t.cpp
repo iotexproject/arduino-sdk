@@ -371,7 +371,11 @@ uint256_t & uint256_t::operator*=(const uint256_t & rhs){
 std::pair <uint256_t, uint256_t> uint256_t::divmod(const uint256_t & lhs, const uint256_t & rhs) const{
     // Save some calculations /////////////////////
     if (rhs == uint256_0){
-        throw std::domain_error("Error: division or modulus by 0");
+        #ifndef ARDUINO
+            throw std::domain_error("Error: division or modulus by 0");
+        #else
+            abort();
+        #endif
     }
     else if (rhs == uint256_1){
         return std::pair <uint256_t, uint256_t> (lhs, uint256_0);
@@ -514,7 +518,11 @@ uint16_t uint256_t::bits() const{
 
 std::string uint256_t::str(uint8_t base, const unsigned int & len) const{
     if ((base < 2) || (base > 36)){
-        throw std::invalid_argument("Base must be in the range 2-36");
+        #ifndef ARDUINO
+            throw std::invalid_argument("Base must be in the range 2-36");
+        #else
+            abort();
+        #endif
     }
     std::string out = "";
     if (!(*this)){
