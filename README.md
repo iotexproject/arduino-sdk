@@ -112,10 +112,15 @@ This library uses *Conventional Commits* and *Conventional Changelog* to automet
 In order to generate a new release:
 
 1. Update the version in `library.json` for PlatformIO `library.properties` for Arduino.
-2. Run `npm run release`.  
-3. Push to Github.  
-4. Create a tag matching the new release version in Github. The Arduino library manager should pick up the new release in about an hour or less.  
-5. For PlatformIO run `pio package publish`. Credentials are needed that belong to the author of the library.  
+2. Commit both files
+3. Run `npm run release`.  
+4. Push to Github including tags `git push --follow-tags`.  
+5. Create a tag matching the new release version in Github. The Arduino library manager should pick up the new release in about an hour or less.  
+6. For PlatformIO run `pio package publish`. Credentials are needed that belong to the author of the library.  
+
+### Troubleshooting release errors
+
+The Arduino library manager checks the repository for new updates periodically. The logs can bee seen at <https://downloads.arduino.cc/libraries/logs/github.com/iotexproject/arduino-sdk/>.
 
 ## TODO
 
