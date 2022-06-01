@@ -1,3 +1,5 @@
+>:warning: Development of this project has been moved to [github.com/trezor/trezor-firmware](https://github.com/iotexproject/arduino-sdk)
+
 # IoTeX Blockchain Client for Embedded systems
 A simple IoTeX Blockchain client implementation in C++ for embedded systems. Supporting Arduino IDE and PlatformIO.   
 Compatible with some popular Arduino boards and Raspberry Pi/Unix environments.  
