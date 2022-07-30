@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/iotexproject/arduino-sdk/compare/v0.2.5...v0.2.6) (2022-07-30)
+
+
+### Bug Fixes
+
+* replace hardcoded serial print with debug macro ([bcc77c6](https://github.com/iotexproject/arduino-sdk/commit/bcc77c6da70152577ef38f0b8351459c8c1bd8f9))
+
 ### [0.2.5](https://github.com/iotexproject/arduino-sdk/compare/v0.2.4...v0.2.5) (2022-05-30)
 
 ### [0.2.4](https://github.com/iotexproject/arduino-sdk/compare/v0.1.6...v0.2.4) (2022-05-30)
