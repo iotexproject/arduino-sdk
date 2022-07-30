@@ -46,21 +46,13 @@ class PlatformHTTP : public AbstractHTTP
 		client.print(F("\r\n\r\n"));
 		client.print(body);
 
-		IOTEX_DEBUG(logModule, "Sending HTTP POST request with body:");
-		Serial.print(path);
-		Serial.print(" HTTP/1.1\r\n");
-		Serial.print("Host: ");
-		Serial.print(host);
-		Serial.print(":");
-		Serial.print(port);
-		Serial.print("\r\n");
-		Serial.print("Content-Type: application/json\r\n");
-		Serial.print("Connection: close\r\n");
-		Serial.print("Content-Length: ");
-		Serial.print(strlen(body));
-		Serial.print("\r\n\r\n");
-		Serial.print(body);
-		Serial.println();
+		IOTEX_DEBUG(logModule, "Sending HTTP POST request with body: %s", path.c_str());
+		IOTEX_DEBUG(logModule, "HTTP/1.1");
+		IOTEX_DEBUG(logModule, "Host: %s:%d", host, port);
+		IOTEX_DEBUG(logModule, "Content-Type: application/json\r\n");
+		IOTEX_DEBUG(logModule, "Connection: close\r\n");
+		IOTEX_DEBUG(logModule, "Content-Length: %d", strlen(body));
+		IOTEX_DEBUG(logModule, "%s", body);
 
 		response = getServerResponse();
 		if(response.length() > 0 && response.indexOf('{') != -1)
