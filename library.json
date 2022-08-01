@@ -5,7 +5,7 @@
       "type": "git",
       "url": "https://github.com/iotexproject/arduino-sdk"
     },
-    "version": "0.2.6",
+    "version": "0.2.7",
     "authors": [
       {
         "name": "IoTeX",
