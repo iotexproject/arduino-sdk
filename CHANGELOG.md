@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com/iotexproject/arduino-sdk/compare/v0.2.7...v0.2.8) (2022-08-20)
+
+
+### Features
+
+* accountManager ([c4ab8ae](https://github.com/iotexproject/arduino-sdk/commit/c4ab8aedaaa3bc502d6d26153addd2bcf1b7ff7a))
+
 ### [0.2.7](https://github.com/iotexproject/arduino-sdk/compare/v0.2.5...v0.2.7) (2022-08-01)
 
 

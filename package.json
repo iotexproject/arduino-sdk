@@ -1,6 +1,6 @@
 {
   "name": "iotex-cpp-blockchain-client",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "A simple C++ API client implementation in for the IoTeX Blockchain",
   "main": "",
   "directories": {
