@@ -26,7 +26,8 @@ const std::string iotex::logModuleNamesLookupTable[(int)LogModules::VALUES_COUNT
 	"USER",
 	"GENERAL",
 	"HTTP",
-	"CONTRACT"
+	"CONTRACT",
+	"ACCOUNT"
 };
 
 const std::string& iotex::userLogModule = iotex::logModuleNamesLookupTable[0];

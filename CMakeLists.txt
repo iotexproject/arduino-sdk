@@ -63,6 +63,7 @@ add_library(iotex-client STATIC
         src/random/os/random.cpp
         src/random/platformRand32.cpp
         src/storage/os/storage.cpp
+        src/account/accountManager.cpp
         src/account/account.cpp
         src/account/address.cpp
         src/abi/abi.cpp

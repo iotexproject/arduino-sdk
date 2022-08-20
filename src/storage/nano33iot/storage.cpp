@@ -32,6 +32,8 @@ ResultCode Storage::readPrivateKey(uint32_t eepromAddress, uint8_t privateKey[IO
 	if(!EEPROM.isValid())
 	{
 		IOTEX_ERROR(logModule, "Failed to read PK. No private keys are stored");
+		// Set private key to all zeros
+		memset(privateKey, 0, IOTEX_PRIVATE_KEY_SIZE);
 		return ResultCode::ERROR_STORAGE_EMPTY;
 	}
 

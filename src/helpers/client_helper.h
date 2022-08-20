@@ -138,6 +138,7 @@ enum LogModules
 	GENERAL,
 	HTTP,
 	CONTRACT,
+	ACCOUNT,
 	VALUES_COUNT
 };
 

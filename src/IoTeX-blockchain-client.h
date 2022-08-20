@@ -3,6 +3,7 @@
 
 #include "abi/abiDecode.h"
 #include "account/account.h"
+#include "account/accountManager.h"
 #include "account/address.h"
 #include "api/wallet/wallets.h"
 #include "connection/connection.h"
