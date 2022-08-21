@@ -475,6 +475,13 @@ TEST_F(ContractTests, generateCallData_Bool)
 
     char expected[] = "551a8c310000000000000000000000000000000000000000000000000000000000000001";
     ASSERT_STREQ(expected, out.c_str());
+
+    param1.value.boolean = false;
+    ParameterValuesDictionary params2;
+    params2.AddParameter(std::string("input1"), (const ParameterValue)param1);
+    contract.generateCallData(function.name, params2, out);
+    const char expected2[] = "551a8c310000000000000000000000000000000000000000000000000000000000000000";
+    ASSERT_STREQ(expected2, out.c_str());
 }
 
 TEST_F(ContractTests, generateCallData_StaticArray_Uint8)

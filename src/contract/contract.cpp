@@ -251,7 +251,7 @@ int32_t iotex::Contract::generateBytesForSimpleType(iotex::abi::ParameterValue p
 		}
 
 		case EthereumTypeName::BOOL:
-			bytes = generateBytesForBool(&(param.value.boolean), buf);
+			bytes = generateBytesForBool(param.value.boolean, buf);
 			break;
 
 		case EthereumTypeName::ADDRESS:
