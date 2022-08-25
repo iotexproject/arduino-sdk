@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.9](https://github.com/iotexproject/arduino-sdk/compare/v0.2.8...v0.2.9) (2022-08-25)
+
+
+### Bug Fixes
+
+*  generateCallData for bool parameters ([528183a](https://github.com/iotexproject/arduino-sdk/commit/528183aba3841ad19ca17143201f110e620c706d))
+
 ### [0.2.8](https://github.com/iotexproject/arduino-sdk/compare/v0.2.7...v0.2.8) (2022-08-20)
 
 
