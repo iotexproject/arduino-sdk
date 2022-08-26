@@ -5,7 +5,7 @@
       "type": "git",
       "url": "https://github.com/iotexproject/arduino-sdk"
     },
-    "version": "0.2.9",
+    "version": "0.2.10",
     "authors": [
       {
         "name": "IoTeX",
@@ -60,16 +60,5 @@
         ],
         "libCompatMode": "strict"
     },
-    "libLDFMode": "deep+",
-    "dependencies":
-    [
-      {
-        "name": "FlashStorage",
-        "platforms": ["atmelsam"]
-      },
-      {
-        "name": "WiFiNINA",
-        "platforms": ["atmelsam"]
-      }
-    ]
+    "libLDFMode": "deep+"
   }
