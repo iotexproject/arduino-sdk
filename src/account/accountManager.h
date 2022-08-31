@@ -2,23 +2,61 @@
 #define IOTEX_ACCOUNT_MANAGER_H
 
 // Support for Linux will be added in the future
-#ifdef ARDUINO
-
 #include "account/account.h"
 #include <map>
+#include <string>
+
+#ifndef TESTABLE
+#ifdef UNIT_TEST_BUILD
+#define TESTABLE public
+#else
+#define TESTABLE protected
+#endif
+#endif
 
 #define IOTEX_ACCOUNT_MANAGER_MAX_ACCOUNTS 10
-
 namespace iotex
 {
 using AccountId = int32_t;
 
 /**
- * @brief A singleton that abstracts account creation and private key storage
+ * @brief A singleton that abstracts account creation and private key storage.
  */
 class AccountManager
 {
   public:
+	/**
+	 * @brief Sets the password for private key encryption. The same password will be used for all
+	 * accounts.
+	 */
+	static void SetPassword(std::string password);
+
+#ifndef ARDUINO
+	/**
+	 * @brief Sets the path where the private keys are stored. Ignored for Arduino as it uses EEPROM.
+	 */
+	static void SetPath(std::string path)
+	{
+		AccountManager::path = path;
+	}
+#endif
+
+	/**
+	 * @brief Sets the max number of accounts that can be created.
+	 */
+	static void SetMaxAccounts(uint8_t max)
+	{
+		AccountManager::maxAccounts = max;
+	}
+
+	/**
+	 * @brief Get the Instance object.
+	 *
+	 * @param path The directory where the encrypted private keys should be stored
+	 * 		The path parameter only needs passed on the first call and is only used in non Arduino
+	 * builds
+	 * @return AccountManager&
+	 */
 	static AccountManager& getInstance()
 	{
 		static AccountManager instance;
@@ -46,19 +84,26 @@ class AccountManager
 	 */
 	void DeleteAccount(AccountId id);
 
+	/**
+	 *  @brief Deletes all the accounts. Also erases them from NVM.
+	 */
+	void DeleteAllAccounts();
+
+	TESTABLE : void LoadAccountsFromNvm();
+
   private:
-	AccountManager(uint8_t maxAccounts = IOTEX_ACCOUNT_MANAGER_MAX_ACCOUNTS);
-	const uint8_t maxAccounts;
+	AccountManager();
 	std::vector<AccountId> availableIds;
 	std::map<AccountId, Account> accounts;
+	static uint8_t maxAccounts;
+	static uint8_t passwordHash[IOTEX_HASH_SIZE];
+#ifndef ARDUINO
+	static std::string path;
+#endif
 
   public:
 	AccountManager(AccountManager const&) = delete;
 	void operator=(AccountManager const&) = delete;
 };
-
-extern AccountManager& accountManager;
 } // namespace iotex
-#endif
-
 #endif
