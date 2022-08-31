@@ -44,4 +44,14 @@ ResultCode Storage::readPrivateKey(uint32_t eepromAddress, uint8_t privateKey[IO
 	return ResultCode::SUCCESS;
 }
 
+ResultCode Storage::deletePrivateKey(uint32_t eepromAddress)
+{
+	for(int i = 0; i < IOTEX_PRIVATE_KEY_SIZE; i++)
+	{
+		EEPROM.write(eepromAddress + i, 0xFF);
+	}
+	EEPROM.commit();
+	return ResultCode::SUCCESS;
+}
+
 #endif

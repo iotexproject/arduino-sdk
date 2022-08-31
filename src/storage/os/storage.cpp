@@ -25,10 +25,14 @@ ResultCode Storage::savePrivateKey(const char* path,
 		perror("Failed: ");
 		return ResultCode::ERROR_STORAGE_OPEN;
 	}
-	fwrite(privateKey, 1, IOTEX_PRIVATE_KEY_SIZE, pFile);
+	int ret = fwrite(privateKey, 1, IOTEX_PRIVATE_KEY_SIZE, pFile);
 	fclose(pFile);
 
-	return ResultCode::SUCCESS;
+	if (ret == IOTEX_PRIVATE_KEY_SIZE)
+	{
+		return ResultCode::SUCCESS;
+	}
+	return ResultCode::ERROR_STORAGE_OPEN;
 }
 
 ResultCode Storage::readPrivateKey(const char* path, uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
@@ -46,6 +50,11 @@ ResultCode Storage::readPrivateKey(const char* path, uint8_t privateKey[IOTEX_PR
 
 	return (readSize == IOTEX_PRIVATE_KEY_SIZE) ? ResultCode::SUCCESS :
 													ResultCode::ERROR_STORAGE_BAD_READ;
+}
+
+ResultCode Storage::deletePrivateKey(const char* path)
+{
+	remove(path);
 }
 
 #endif
