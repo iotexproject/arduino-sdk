@@ -29,6 +29,7 @@ RUN mkdir /workdir/project && \
         lsb-release \
         protobuf-compiler \
         psmisc \
+        doxygen \
         libcurl4-gnutls-dev && \
     apt-get -y clean && apt-get -y autoremove && \
     # Latest PIP & Python dependencies
