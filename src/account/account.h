@@ -37,49 +37,49 @@ class Account
 	 *
 	 * @param[out] buffer
 	 */
-	void getIotexAddress(char buffer[IOTEX_ADDRESS_C_STRING_SIZE]);
+	void getIotexAddress(char buffer[IOTEX_ADDRESS_C_STRING_SIZE]) const;
 
 	/**
 	 * @brief Get the Ethereum address as a null terminated string
 	 *
 	 * @param[out] buffer
 	 */
-	void getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE]);
+	void getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE]) const;
 
 	/**
 	 * @brief Get the Ethereum address as a byte array
 	 *
 	 * @param[out] buffer
 	 */
-	void getEthereumAddressBytes(uint8_t buffer[ETH_ADDRESS_SIZE]);
+	void getEthereumAddressBytes(uint8_t buffer[ETH_ADDRESS_SIZE]) const;
 
 	/**
 	 * @brief Get the public key as a byte array
 	 *
 	 * @param[out] buffer
 	 */
-	void getPublicKey(uint8_t buffer[IOTEX_PUBLIC_KEY_SIZE]);
+	void getPublicKey(uint8_t buffer[IOTEX_PUBLIC_KEY_SIZE]) const;
 
 	/**
 	 * @brief Get the public key as a null terminated string
 	 *
 	 * @param[out] buffer
 	 */
-	void getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE]);
+	void getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE]) const;
 
 	/**
 	 * @brief Get the private key as a byte array
 	 *
 	 * @param[out] buffer
 	 */
-	void getPrivateKey(uint8_t buffer[IOTEX_PRIVATE_KEY_SIZE]);
+	void getPrivateKey(uint8_t buffer[IOTEX_PRIVATE_KEY_SIZE]) const;
 
 	/**
 	 * @brief Get the private key as a null terminated string
 	 *
 	 * @param[out] buffer
 	 */
-	void getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE]);
+	void getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE]) const;
 
 	/**************************************************************************/
 	/* Signing */
