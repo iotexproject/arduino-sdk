@@ -45,6 +45,14 @@ class Storage
 	virtual ResultCode readPrivateKey(IOTEX_STORAGE_ID_TYPE storageId,
 									  uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE]);
 
+	/**
+	 * @brief Delete a stored private key from persistent memory
+	 *
+	 * @param storageId The EEPROM address in Arduino, or the file path in Linux
+	 * @return ResultCode Success or an error code
+	 */
+	virtual ResultCode deletePrivateKey(IOTEX_STORAGE_ID_TYPE storageId);
+
 	static void Initialize(uint32_t storageSize);
 
   private:

@@ -26,7 +26,7 @@ ResultCode Storage::savePrivateKey(uint32_t eepromAddress,
 								   const uint8_t privateKey[IOTEX_PRIVATE_KEY_SIZE])
 {
 	Initialize(IOTEX_DEFAULT_EEPROM_SIZE);
-	IOTEX_DEBUG(logModule, "Reading private key from EEPROM addres %d", eepromAddress);
+	IOTEX_DEBUG(logModule, "Writing private key to EEPROM addres %d", eepromAddress);
 	for(int i = 0; i < IOTEX_PRIVATE_KEY_SIZE; i++)
 	{
 		EEPROM.write(eepromAddress + i, privateKey[i]);
@@ -42,6 +42,18 @@ ResultCode Storage::readPrivateKey(uint32_t eepromAddress, uint8_t privateKey[IO
 	{
 		privateKey[i] = EEPROM.read(eepromAddress + i);
 	}
+	return ResultCode::SUCCESS;
+}
+
+ResultCode Storage::deletePrivateKey(uint32_t eepromAddress)
+{
+	Initialize(IOTEX_DEFAULT_EEPROM_SIZE);
+	IOTEX_DEBUG(logModule, "Deleting private key at EEPROM addres %d", eepromAddress);
+	for(int i = 0; i < IOTEX_PRIVATE_KEY_SIZE; i++)
+	{
+		EEPROM.write(eepromAddress + i, 0xFF);
+	}
+	EEPROM.commit();
 	return ResultCode::SUCCESS;
 }
 
