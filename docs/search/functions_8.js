@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['readcontract_0',['readContract',['../classiotex_1_1api_1_1_i_wallets.html#a24f0f0f9ecf3ba8ef409dd412ade87cf',1,'iotex::api::IWallets::readContract()'],['../classiotex_1_1api_1_1_wallets.html#a9a870da5e7dba1b09ff6be9e1a029497',1,'iotex::api::Wallets::readContract()']]],
-  ['readprivatekey_1',['readPrivateKey',['../classiotex_1_1_storage.html#a82ae33ed685c98cce90a3c52eff5c98a',1,'iotex::Storage']]]
+  ['isdynamic_203',['IsDynamic',['../classiotex_1_1abi_1_1_input_output_abi.html#aedb590eef00cf6631d23b0ca91a358f8',1,'iotex::abi::InputOutputAbi']]],
+  ['isdynamic_204',['isDynamic',['../classiotex_1_1abi_1_1_parameter_value.html#a9e628d462eb12b498e6c7ed54f50989d',1,'iotex::abi::ParameterValue']]],
+  ['isinteger_205',['isInteger',['../classiotex_1_1abi_1_1_input_output_abi.html#af3b3235bbe7959e0a3bef9516d07471b',1,'iotex::abi::InputOutputAbi']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iotex_2dclient_0',['IoTeX-Client',['../index.html',1,'']]]
+  ['iotex_20blockchain_20client_20for_20embedded_20systems_232',['IoTeX Blockchain Client for Embedded systems',['../index.html',1,'']]]
 ];

@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['hex2str_0',['hex2str',['../classiotex_1_1_signer.html#a8b50a4c0f4f872f92ddbc6953ad3bfd8',1,'iotex::Signer']]]
+  ['generatecalldata_180',['generateCallData',['../classiotex_1_1_contract.html#a7536fd60f6b94cfc42890cb42def275b',1,'iotex::Contract']]],
+  ['generatecalldataforbalanceof_181',['generateCallDataForBalanceOf',['../classiotex_1_1_xrc20_contract.html#a8f0467c736606ac00e2702361bc88e1c',1,'iotex::Xrc20Contract']]],
+  ['generatecalldatafortotalsupply_182',['generateCallDataForTotalSupply',['../classiotex_1_1_xrc20_contract.html#aa1383e638332d4de5e04b9c3223fa134',1,'iotex::Xrc20Contract']]],
+  ['generatecalldatafortransfer_183',['generateCallDataForTransfer',['../classiotex_1_1_xrc20_contract.html#a12b4a8f8c8e3b24c49122ecf76e306ae',1,'iotex::Xrc20Contract']]],
+  ['getaccount_184',['getAccount',['../classiotex_1_1api_1_1_i_wallets.html#a8e942208fca63d871a4072bf7be9e509',1,'iotex::api::IWallets::getAccount()'],['../classiotex_1_1api_1_1_wallets.html#ae7938d973d2aa745f587f89afa261e9b',1,'iotex::api::Wallets::getAccount()']]],
+  ['getaccount_185',['GetAccount',['../classiotex_1_1_account_manager.html#a5c859b355d17f2f6a57cfd54c71958f8',1,'iotex::AccountManager']]],
+  ['getbalance_186',['getBalance',['../classiotex_1_1api_1_1_i_wallets.html#a53a053ec8c77e63a041c48fa0610b3d8',1,'iotex::api::IWallets::getBalance()'],['../classiotex_1_1api_1_1_wallets.html#a75ac6cd76ceff1b8ddf624da94569f4c',1,'iotex::api::Wallets::getBalance()']]],
+  ['getethereumaddress_187',['getEthereumAddress',['../classiotex_1_1_account.html#a99b87b9bfe00599b0b31f91d3c525e2a',1,'iotex::Account']]],
+  ['getethereumaddressbytes_188',['getEthereumAddressBytes',['../classiotex_1_1_account.html#a368d5ea432054c975ebb2b115c4fb046',1,'iotex::Account']]],
+  ['getethereummessagehash_189',['getEthereumMessageHash',['../classiotex_1_1_signer.html#afddb6469e038861c49b8b819e787c547',1,'iotex::Signer']]],
+  ['getexecutionbyhash_190',['getExecutionByHash',['../classiotex_1_1api_1_1_wallets.html#a387bcdd6fae3c2e463c10a47120eaa81',1,'iotex::api::Wallets::getExecutionByHash()'],['../classiotex_1_1api_1_1_i_wallets.html#a5a8e28e73953fe3e1af1a8b7c34576c6',1,'iotex::api::IWallets::getExecutionByHash()']]],
+  ['gethash_191',['getHash',['../classiotex_1_1_signer.html#a72b1fd6d4105cf589e820ec314373125',1,'iotex::Signer']]],
+  ['getinstance_192',['getInstance',['../classiotex_1_1_account_manager.html#a20894b2590568e8690088bf068a07577',1,'iotex::AccountManager']]],
+  ['getiotexaddress_193',['getIotexAddress',['../classiotex_1_1_account.html#acf3772456a64f47a7c656174705feb58',1,'iotex::Account']]],
+  ['getprivatekey_194',['getPrivateKey',['../classiotex_1_1_account.html#a018e3373c025b77afddf6809541f74a2',1,'iotex::Account']]],
+  ['getprivatekeystring_195',['getPrivateKeyString',['../classiotex_1_1_account.html#a5f3ae5c5800d69fdedbcb731db11efbf',1,'iotex::Account']]],
+  ['getpublickey_196',['getPublicKey',['../classiotex_1_1_account.html#a24b84a23a9a562e9cd409595668cc1c3',1,'iotex::Account::getPublicKey()'],['../classiotex_1_1_signer.html#a010b8752d10b60c550ad7de40122000e',1,'iotex::Signer::getPublicKey()']]],
+  ['getpublickeystring_197',['getPublicKeyString',['../classiotex_1_1_account.html#a7a6301a5a525418cda1ee64585cfe075',1,'iotex::Account']]],
+  ['getresultstring_198',['GetResultString',['../classiotex_1_1_helpers.html#a6e676e9ffce63a938173d2a4315c7bfc',1,'iotex::Helpers']]],
+  ['getsignature_199',['getSignature',['../classiotex_1_1abi_1_1_function_abi.html#a7b3dcb40ab103da7f0ec7ead6c1f5b40',1,'iotex::abi::FunctionAbi']]],
+  ['gettransactionbyhash_200',['getTransactionByHash',['../classiotex_1_1api_1_1_i_wallets.html#adb25eb8876cc33cb5352ea6559701c9f',1,'iotex::api::IWallets::getTransactionByHash()'],['../classiotex_1_1api_1_1_wallets.html#a40c20dbde72111a891be85111f6e7600',1,'iotex::api::Wallets::getTransactionByHash()']]],
+  ['gettypeandsizefromstring_201',['getTypeAndSizeFromString',['../classiotex_1_1abi_1_1_input_output_abi.html#a9e2676d12b35c54d6b0cb19929fa9d16',1,'iotex::abi::InputOutputAbi']]]
 ];
