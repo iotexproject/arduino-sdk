@@ -51,37 +51,37 @@ Account::Account(Random* pRandomGenerator, Encoder* pEncoder, Signer* pSigner,
 // GETTERS
 ////////////////////////////////////////////////////////////////////////////////
 
-void Account::getIotexAddress(char buffer[IOTEX_ADDRESS_C_STRING_SIZE])
+void Account::getIotexAddress(char buffer[IOTEX_ADDRESS_C_STRING_SIZE]) const
 {
 	memcpy(buffer, _iotexAddr.c_str(), IOTEX_ADDRESS_C_STRING_SIZE);
 }
 
-void Account::getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE])
+void Account::getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE]) const
 {
 	memcpy(buffer, _ethAddr.c_str(), ETH_ADDRESS_C_STRING_SIZE);
 }
 
-void Account::getEthereumAddressBytes(uint8_t buffer[ETH_ADDRESS_SIZE])
+void Account::getEthereumAddressBytes(uint8_t buffer[ETH_ADDRESS_SIZE]) const
 {
 	signer.str2hex(_ethAddr.c_str(), buffer, ETH_ADDRESS_SIZE);
 }
 
-void Account::getPublicKey(uint8_t buffer[IOTEX_PUBLIC_KEY_SIZE])
+void Account::getPublicKey(uint8_t buffer[IOTEX_PUBLIC_KEY_SIZE]) const
 {
 	memcpy(buffer, _publicKey, IOTEX_PUBLIC_KEY_SIZE);
 }
 
-void Account::getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE])
+void Account::getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE]) const
 {
 	signer.hex2str(_publicKey, IOTEX_PUBLIC_KEY_SIZE, buffer, IOTEX_PUBLIC_KEY_C_STRING_SIZE);
 }
 
-void Account::getPrivateKey(uint8_t buffer[IOTEX_PRIVATE_KEY_SIZE])
+void Account::getPrivateKey(uint8_t buffer[IOTEX_PRIVATE_KEY_SIZE]) const
 {
 	memcpy(buffer, _privateKey, IOTEX_PRIVATE_KEY_SIZE);
 }
 
-void Account::getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE])
+void Account::getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE]) const
 {
 	signer.hex2str(_privateKey, IOTEX_PRIVATE_KEY_SIZE, buffer, IOTEX_PRIVATE_KEY_C_STRING_SIZE);
 }
