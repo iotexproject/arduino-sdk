@@ -40,11 +40,21 @@ class Account
 	void getIotexAddress(char buffer[IOTEX_ADDRESS_C_STRING_SIZE]) const;
 
 	/**
+	 * @brief Get the IoTeX address as a string
+	 */
+	IotexString getIotexAddress() const;
+
+	/**
 	 * @brief Get the Ethereum address as a null terminated string
 	 *
 	 * @param[out] buffer
 	 */
 	void getEthereumAddress(char buffer[ETH_ADDRESS_C_STRING_SIZE]) const;
+
+	/**
+	 * @brief Get the Ethereum address as a string
+	 */
+	IotexString getEthereumAddress() const;
 
 	/**
 	 * @brief Get the Ethereum address as a byte array
@@ -68,6 +78,11 @@ class Account
 	void getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE]) const;
 
 	/**
+	 * @brief Get the public key as a  string
+	 */
+	IotexString getPublicKeyString() const;
+
+	/**
 	 * @brief Get the private key as a byte array
 	 *
 	 * @param[out] buffer
@@ -80,6 +95,11 @@ class Account
 	 * @param[out] buffer
 	 */
 	void getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE]) const;
+
+	/**
+	 * @brief Get the private key as a string
+	 */
+	IotexString getPrivateKeyString() const;
 
 	/**************************************************************************/
 	/* Signing */
