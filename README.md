@@ -111,7 +111,7 @@ Run `doxygen Doxyfile` to regenerate the doxygen documentation. The output will 
 This library uses *Conventional Commits* and *Conventional Changelog* to automete the release and changelog generation.  
 In order to generate a new release:
 
-1. Update the version in `library.json` for PlatformIO `library.properties` for Arduino.
+1. Run `standard-version "--dry-run"` to preview the changelog and update the version in `library.json` for PlatformIO `library.properties` for Arduino.
 2. Commit both files
 3. Run `npm run release`.  
 4. Push to Github including tags `git push --follow-tags`.  
