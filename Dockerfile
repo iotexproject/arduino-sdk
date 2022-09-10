@@ -35,6 +35,7 @@ RUN mkdir /workdir/project && \
     # Latest PIP & Python dependencies
     python3 -m pip install -U pip && \
     python3 -m pip install -U setuptools && \
+    python3 -m pip install -U platformio && \
     python3 -m pip install cmake>=3.20.0 wheel && \
     # Newer PIP will not overwrite distutils, so upgrade PyYAML manually
     python3 -m pip install --ignore-installed -U PyYAML && \
