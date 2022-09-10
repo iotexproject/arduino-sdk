@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.11](https://github.com/iotexproject/arduino-sdk/compare/v0.2.9...v0.2.11) (2022-09-10)
+
+
+### Features
+
+* **account:** add getters that return IotexString ([9d4b8ce](https://github.com/iotexproject/arduino-sdk/commit/9d4b8ce27b0f07fdbe7a66d8efdbd7c5e72b1f8b))
+* **account:** pk encryption ([9994066](https://github.com/iotexproject/arduino-sdk/commit/9994066f5991861298308b91c4d4b98c531dd9bc))
+* **storage:**  deletePrivateKey ([e4a8933](https://github.com/iotexproject/arduino-sdk/commit/e4a89333df2fe53418a7f2cdefe66845dba20263))
+
+
+### Bug Fixes
+
+* hw wallet example ([9c5923c](https://github.com/iotexproject/arduino-sdk/commit/9c5923c692624dca7f402dffce4ce7ffe3a9948a))
+
 ### [0.2.9](https://github.com/iotexproject/arduino-sdk/compare/v0.2.8...v0.2.9) (2022-08-25)
 
 
