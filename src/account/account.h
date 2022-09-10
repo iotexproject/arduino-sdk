@@ -121,7 +121,7 @@ class Account
 	 * @param[out] signature The transfer signature as a byte array
 	 */
 	void signTokenTransferAction(iotex::responsetypes::ActionCore_Transfer& transfer,
-								 uint8_t signature[IOTEX_SIGNATURE_SIZE]);
+								 uint8_t signature[IOTEX_SIGNATURE_SIZE]) const;
 
 	/**
 	 * @brief Signs an execution action
@@ -132,7 +132,7 @@ class Account
 	 */
 	void signExecutionAction(iotex::responsetypes::ActionCore_Execution& execution,
 							 uint8_t signature[IOTEX_SIGNATURE_SIZE],
-							 uint8_t hash[IOTEX_HASH_SIZE] = nullptr);
+							 uint8_t hash[IOTEX_HASH_SIZE] = nullptr) const;
 
 	/**************************************************************************/
 	/* Action execution */
@@ -154,7 +154,7 @@ class Account
 	template<typename TAPI>
 	ResultCode sendTokenTransferAction(Connection<TAPI>& conn, uint64_t nonce, uint64_t gasLimit,
 									   const char* gasPrice, const char* amount,
-									   const char* recipient, uint8_t hash[IOTEX_HASH_SIZE])
+									   const char* recipient, uint8_t hash[IOTEX_HASH_SIZE]) const
 	{
 		responsetypes::ActionCore_Transfer core;
 		core.version = 1;
@@ -191,7 +191,7 @@ class Account
 	ResultCode sendExecutionAction(Connection<TAPI>& conn, uint64_t nonce, uint64_t gasLimit,
 								   const char* gasPrice, const char* amount,
 								   const char contract[IOTEX_ADDRESS_C_STRING_SIZE],
-								   IotexString data, uint8_t hash[IOTEX_HASH_SIZE])
+								   IotexString data, uint8_t hash[IOTEX_HASH_SIZE]) const
 	{
 		responsetypes::ActionCore_Execution core;
 		core.version = 1;

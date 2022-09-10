@@ -88,7 +88,7 @@ void Account::getPublicKeyString(char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE]) co
 
 IotexString Account::getPublicKeyString() const
 {
-	char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE];
+	char buffer[IOTEX_PUBLIC_KEY_C_STRING_SIZE] = {0};
 	signer.hex2str(_publicKey, IOTEX_PUBLIC_KEY_SIZE, buffer, IOTEX_PUBLIC_KEY_C_STRING_SIZE);
 	return IotexString(buffer);
 }
@@ -105,7 +105,7 @@ void Account::getPrivateKeyString(char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE]) 
 
 IotexString Account::getPrivateKeyString() const
 {
-	char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE];
+	char buffer[IOTEX_PRIVATE_KEY_C_STRING_SIZE] = {0};
 	signer.hex2str(_privateKey, IOTEX_PRIVATE_KEY_SIZE, buffer, IOTEX_PRIVATE_KEY_C_STRING_SIZE);
 	return IotexString(buffer);
 }
@@ -121,7 +121,7 @@ void Account::signMessage(const uint8_t* message, size_t size,
 }
 
 void Account::signTokenTransferAction(iotex::responsetypes::ActionCore_Transfer& transfer,
-									  uint8_t signature[IOTEX_SIGNATURE_SIZE])
+									  uint8_t signature[IOTEX_SIGNATURE_SIZE]) const
 {
 	uint8_t encodedCore[1024] = {0};
 	size_t encodedCoreSize =
@@ -134,7 +134,7 @@ void Account::signTokenTransferAction(iotex::responsetypes::ActionCore_Transfer&
 
 void Account::signExecutionAction(iotex::responsetypes::ActionCore_Execution& execution,
 								  uint8_t signature[IOTEX_SIGNATURE_SIZE],
-								  uint8_t hash[IOTEX_HASH_SIZE])
+								  uint8_t hash[IOTEX_HASH_SIZE]) const
 {
 	uint8_t encodedCore[1024] = {0};
 	size_t encodedCoreSize =
