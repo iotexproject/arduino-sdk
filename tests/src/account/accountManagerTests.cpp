@@ -87,7 +87,7 @@ TEST_F(AccountManagerTests, loadAccountFromFile)
 
     uut.LoadAccountsFromNvm();
 	uint8_t retrievedPk[IOTEX_PRIVATE_KEY_SIZE] = {0};
-	uut.GetAccount(0).getPrivateKey(retrievedPk);
+	uut.GetAccount(0)->getPrivateKey(retrievedPk);
 
 	// printPrivateKey(retrievedPk);
 	ASSERT_EQ(0, memcmp(pk, retrievedPk, IOTEX_PRIVATE_KEY_SIZE));

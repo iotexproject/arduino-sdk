@@ -5,6 +5,7 @@
 #include "account/account.h"
 #include <map>
 #include <string>
+#include <set>
 
 #ifndef TESTABLE
 #ifdef UNIT_TEST_BUILD
@@ -33,7 +34,8 @@ class AccountManager
 
 #ifndef ARDUINO
 	/**
-	 * @brief Sets the path where the private keys are stored. Ignored for Arduino as it uses EEPROM.
+	 * @brief Sets the path where the private keys are stored. Ignored for Arduino as it uses
+	 * EEPROM.
 	 */
 	static void SetPath(std::string path)
 	{
@@ -77,7 +79,7 @@ class AccountManager
 	/**
 	 *  @brief Gets the account object
 	 */
-	const Account& GetAccount(AccountId id);
+	const Account* GetAccount(AccountId id);
 
 	/**
 	 *  @brief Deletes the account. Also erases it from NVM.
@@ -89,17 +91,24 @@ class AccountManager
 	 */
 	void DeleteAllAccounts();
 
+	/**
+	 * @brief Gets all the accounts.
+	 */
+	std::vector<AccountId> GetAllAccountIds();
+
 	TESTABLE : void LoadAccountsFromNvm();
 
   private:
 	AccountManager();
-	std::vector<AccountId> availableIds;
+	std::set<AccountId> availableIds;
 	std::map<AccountId, Account> accounts;
 	static uint8_t maxAccounts;
 	static uint8_t passwordHash[IOTEX_HASH_SIZE];
 #ifndef ARDUINO
 	static std::string path;
 #endif
+	int encrypt(const uint8_t* in, uint8_t* out);
+	int decrypt(const uint8_t* in, uint8_t* out);
 
   public:
 	AccountManager(AccountManager const&) = delete;
