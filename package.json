@@ -1,6 +1,6 @@
 {
   "name": "iotex-cpp-blockchain-client",
-  "version": "0.2.11",
+  "version": "0.3.1",
   "description": "A simple C++ API client implementation in for the IoTeX Blockchain",
   "main": "",
   "directories": {
@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/iotexproject/arduino-sdk#readme",
   "devDependencies": {
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.5.0"
   }
 }
