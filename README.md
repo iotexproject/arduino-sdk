@@ -118,11 +118,11 @@ In order to generate a new release:
 5. Create a tag matching the new release version in Github. The Arduino library manager should pick up the new release in about an hour or less.  
 6. For PlatformIO run `pio package publish`. Credentials are needed that belong to the author of the library.  
 
-### Troubleshooting release errors
+### Troubleshooting release errors
 
 The Arduino library manager checks the repository for new updates periodically. The logs can bee seen at <https://downloads.arduino.cc/libraries/logs/github.com/iotexproject/arduino-sdk/>.
 
-## TODO
+## TODO
 
 - [ ] Set up CI/CD (build and test in Linux, build using arduino-cli and platformio).   
 - [ ] Automate release generation/publishing in CI.  
