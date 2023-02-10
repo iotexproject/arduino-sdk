@@ -25,11 +25,11 @@ The Dockerfile provided sets up a Ubuntu based dev container with all required d
 
 Follow the below steps in order to use VSCode to develop and contribute to the library:  
 
-1. Install the *Remote - Containers* VSCode extension.
+1. Install the *Dev Containers* VSCode extension.
 
 2. Open the directory containing this repository in VSCode.
 
-3. Press `F1` and enter `Remote-Containers: Rebuild and reopen in container`.  
+3. Press `F1` and enter `Dev Containers: Rebuild and Reopen in Container`.  
 
 4. Wait until the container is started. It should take a couple of minutes.  
 
